@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/inuptnumber"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="输入密码"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/secound_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:visibility="gone" >
+
+            <EditText
+                android:id="@+id/EditText05"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="3sp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_focus"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="numberPassword" />
+
+            <EditText
+                android:id="@+id/EditText06"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3sp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_default"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="numberPassword" />
+
+            <EditText
+                android:id="@+id/EditText07"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3sp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_default"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/EditText08"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_default"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="numberPassword" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/first_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="3sp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_focus"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="numberPassword" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3sp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_default"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="numberPassword" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3sp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_default"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittext_default"
+                android:ems="10"
+                android:gravity="center_vertical|center_horizontal"
+                android:inputType="numberPassword" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:visibility="gone" />
+
+        <requestFocus />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:text="开启密码锁后，每次进入云盘都需要输入密码"
+            android:textColor="#7d7d7d"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </LinearLayout>
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/keyboard_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:keyBackground="@drawable/key_bg_normal"
+        android:visibility="visible" />
+
+</LinearLayout>
