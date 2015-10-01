@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#ffffff</color>
+    <color name="base_green">#6B9529</color>
+    <color name="base_gray">#E1E0DE</color>
+    <color name="base_black">#202020</color>
+    <color name="base_dark">#404040</color>
 </resources>

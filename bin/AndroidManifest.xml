@@ -5,8 +5,10 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -22,11 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.haoxue.haoaccount.act.GuideAct"/>
-        <activity android:name="com.haoxue.haoaccount.act.MainAct"/>
-        <activity android:name="com.haoxue.haoaccount.act.PasswordSetAct"
+        <activity android:name="com.haoxue.haoaccount.act.GuideAct" />
+        <activity
+            android:name="com.haoxue.haoaccount.act.MainAct"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.haoxue.haoaccount.act.PasswordSetAct"
             android:configChanges="keyboardHidden" />
-
     </application>
 
 </manifest>

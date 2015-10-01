@@ -133,8 +133,14 @@ public class PasswordSetAct extends Activity {
 				}
 			}
 		} else {
-			inuptnumber.setText("请再次输入");
-			textView2.setText("");
+			
+			if (realpass == null || realpass.equals("")) {
+				inuptnumber.setText("请再次输入");
+				textView2.setText("");
+			}else{
+				inuptnumber.setText("请输入密码");
+				textView2.setText("输入的密码不对");
+			}
 			if (((Integer) msg.obj) % 5 == 0) {
 				EditText05.setBackgroundResource(R.drawable.edittext_focus);
 				EditText06.setBackgroundResource(R.drawable.edittext_default);

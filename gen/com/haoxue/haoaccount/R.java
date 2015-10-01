@@ -12,9 +12,69 @@ public final class R {
         public static final int fade_in=0x7f040000;
         public static final int fade_out=0x7f040001;
     }
+    public static final class array {
+        public static final int income_from=0x7f080000;
+        public static final int income_save=0x7f080001;
+        public static final int outcome_from=0x7f080002;
+        public static final int outcome_use=0x7f080003;
+        public static final int prepay_use=0x7f080004;
+    }
     public static final class attr {
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mm_color=0x7f010000;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mm_pressedDuration=0x7f010003;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mm_rtlEnabled=0x7f010005;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mm_scale=0x7f010001;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mm_strokeWidth=0x7f010004;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int mm_transformDuration=0x7f010002;
     }
     public static final class color {
+        public static final int base_black=0x7f060003;
+        public static final int base_dark=0x7f060004;
+        public static final int base_gray=0x7f060002;
+        public static final int base_green=0x7f060001;
         public static final int white=0x7f060000;
     }
     public static final class dimen {
@@ -26,67 +86,142 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f070000;
         public static final int activity_vertical_margin=0x7f070001;
+        /**  DrawerLayout 
+         */
+        public static final int mm_up_arrow_margin=0x7f070002;
+        public static final int tab_top_fontsize=0x7f070003;
     }
     public static final class drawable {
-        public static final int circle_bg=0x7f020000;
-        public static final int corners_bg2=0x7f020001;
-        public static final int dot=0x7f020002;
-        public static final int dot_selected=0x7f020003;
-        public static final int edittext_default=0x7f020004;
-        public static final int edittext_focus=0x7f020005;
-        public static final int edittext_pass=0x7f020006;
-        public static final int frame_loading=0x7f020007;
-        public static final int ic_launcher=0x7f020008;
-        public static final int img_web_loading_01=0x7f020009;
-        public static final int img_web_loading_02=0x7f02000a;
-        public static final int img_web_loading_03=0x7f02000b;
-        public static final int img_web_loading_04=0x7f02000c;
-        public static final int img_web_loading_05=0x7f02000d;
-        public static final int img_web_loading_06=0x7f02000e;
-        public static final int img_web_loading_07=0x7f02000f;
-        public static final int img_web_loading_08=0x7f020010;
-        public static final int key0=0x7f020011;
-        public static final int key1=0x7f020012;
-        public static final int key2=0x7f020013;
-        public static final int key3=0x7f020014;
-        public static final int key4=0x7f020015;
-        public static final int key5=0x7f020016;
-        public static final int key6=0x7f020017;
-        public static final int key7=0x7f020018;
-        public static final int key8=0x7f020019;
-        public static final int key9=0x7f02001a;
-        public static final int key_bg_normal=0x7f02001b;
-        public static final int key_bg_prssed=0x7f02001c;
-        public static final int key_clear=0x7f02001d;
-        public static final int key_del=0x7f02001e;
-        public static final int keyboard_bg=0x7f02001f;
-        public static final int shape_text=0x7f020020;
-        public static final int start=0x7f020021;
-        public static final int welcome1=0x7f020022;
-        public static final int welcome2=0x7f020023;
-        public static final int welcome3=0x7f020024;
+        public static final int action_personal=0x7f020000;
+        public static final int app=0x7f020001;
+        public static final int circle_bg=0x7f020002;
+        public static final int corners_bg2=0x7f020003;
+        public static final int dot=0x7f020004;
+        public static final int dot_selected=0x7f020005;
+        public static final int drawer_shadow=0x7f020006;
+        public static final int edittext_default=0x7f020007;
+        public static final int edittext_focus=0x7f020008;
+        public static final int edittext_pass=0x7f020009;
+        public static final int frame_loading=0x7f02000a;
+        public static final int go_detail_arrow=0x7f02000b;
+        public static final int home_jiankang=0x7f02000c;
+        public static final int home_jingdian=0x7f02000d;
+        public static final int home_kuaile=0x7f02000e;
+        public static final int home_tianqi=0x7f02000f;
+        public static final int ic_launcher=0x7f020010;
+        public static final int ic_user=0x7f020011;
+        public static final int img_web_loading_01=0x7f020012;
+        public static final int img_web_loading_02=0x7f020013;
+        public static final int img_web_loading_03=0x7f020014;
+        public static final int img_web_loading_04=0x7f020015;
+        public static final int img_web_loading_05=0x7f020016;
+        public static final int img_web_loading_06=0x7f020017;
+        public static final int img_web_loading_07=0x7f020018;
+        public static final int img_web_loading_08=0x7f020019;
+        public static final int key0=0x7f02001a;
+        public static final int key1=0x7f02001b;
+        public static final int key2=0x7f02001c;
+        public static final int key3=0x7f02001d;
+        public static final int key4=0x7f02001e;
+        public static final int key5=0x7f02001f;
+        public static final int key6=0x7f020020;
+        public static final int key7=0x7f020021;
+        public static final int key8=0x7f020022;
+        public static final int key9=0x7f020023;
+        public static final int key_bg_normal=0x7f020024;
+        public static final int key_bg_prssed=0x7f020025;
+        public static final int key_clear=0x7f020026;
+        public static final int key_del=0x7f020027;
+        public static final int keyboard_bg=0x7f020028;
+        public static final int main_month=0x7f020029;
+        public static final int main_today=0x7f02002a;
+        public static final int main_week=0x7f02002b;
+        public static final int message_press=0x7f02002c;
+        public static final int pifu=0x7f02002d;
+        public static final int right_arrow_icon=0x7f02002e;
+        public static final int select_bg=0x7f02002f;
+        public static final int setting=0x7f020030;
+        public static final int shape_juxing_zhijiao_baise=0x7f020031;
+        public static final int shape_juxing_zhijiao_huise=0x7f020032;
+        public static final int shape_text=0x7f020033;
+        public static final int start=0x7f020034;
+        public static final int top_bar_background=0x7f020035;
+        public static final int unread_count_bg=0x7f020036;
+        public static final int welcome1=0x7f020037;
+        public static final int welcome2=0x7f020038;
+        public static final int welcome3=0x7f020039;
     }
     public static final class id {
-        public static final int EditText05=0x7f0b0005;
-        public static final int EditText06=0x7f0b0006;
-        public static final int EditText07=0x7f0b0007;
-        public static final int EditText08=0x7f0b0008;
-        public static final int action_settings=0x7f0b0013;
-        public static final int btn=0x7f0b0002;
-        public static final int editText1=0x7f0b000a;
-        public static final int editText2=0x7f0b000b;
-        public static final int editText3=0x7f0b000c;
-        public static final int editText4=0x7f0b000d;
-        public static final int first_pwd=0x7f0b0009;
-        public static final int inuptnumber=0x7f0b0003;
-        public static final int keyboard_view=0x7f0b0010;
-        public static final int ll=0x7f0b0001;
-        public static final int passwordEditText=0x7f0b000e;
-        public static final int secound_pwd=0x7f0b0004;
-        public static final int start=0x7f0b0011;
-        public static final int text=0x7f0b0012;
-        public static final int textView2=0x7f0b000f;
-        public static final int viewpager_guidance=0x7f0b0000;
+        public static final int EditText05=0x7f0c0005;
+        public static final int EditText06=0x7f0c0006;
+        public static final int EditText07=0x7f0c0007;
+        public static final int EditText08=0x7f0c0008;
+        public static final int action_personal=0x7f0c0045;
+        public static final int app=0x7f0c0021;
+        public static final int app_text=0x7f0c0022;
+        public static final int btn=0x7f0c0002;
+        public static final int button1=0x7f0c0044;
+        public static final int changInfo=0x7f0c001a;
+        public static final int content_frame=0x7f0c0013;
+        public static final int date_of_month_tv=0x7f0c0030;
+        public static final int drawer_layout=0x7f0c0012;
+        public static final int editText1=0x7f0c000a;
+        public static final int editText2=0x7f0c000b;
+        public static final int editText3=0x7f0c000c;
+        public static final int editText4=0x7f0c000d;
+        public static final int exit=0x7f0c002a;
+        public static final int first_pwd=0x7f0c0009;
+        public static final int gv_jiankang=0x7f0c0026;
+        public static final int gv_jingdian=0x7f0c0027;
+        public static final int gv_kuaile=0x7f0c0028;
+        public static final int gv_tianqi=0x7f0c0025;
+        public static final int head1=0x7f0c0017;
+        public static final int include_left=0x7f0c0015;
+        public static final int income_chat=0x7f0c0041;
+        public static final int inuptnumber=0x7f0c0003;
+        public static final int keyboard_view=0x7f0c0010;
+        public static final int lay3=0x7f0c001b;
+        public static final int left_drawer=0x7f0c0014;
+        public static final int ll=0x7f0c0001;
+        public static final int month_datestr_tv=0x7f0c003e;
+        public static final int month_expense_amount_tv=0x7f0c003f;
+        public static final int month_icon_fl=0x7f0c003b;
+        public static final int month_icon_iv=0x7f0c003c;
+        public static final int month_income_amount_tv=0x7f0c0040;
+        public static final int month_tv=0x7f0c003d;
+        public static final int msg_unread0=0x7f0c0020;
+        public static final int msg_unread1=0x7f0c0023;
+        public static final int outcome_chat=0x7f0c0042;
+        public static final int passwordEditText=0x7f0c000e;
+        public static final int pifu=0x7f0c001c;
+        public static final int pifu_text=0x7f0c001d;
+        public static final int prepay_chat=0x7f0c0043;
+        public static final int right_drawer=0x7f0c0016;
+        public static final int secound_pwd=0x7f0c0004;
+        public static final int set=0x7f0c0029;
+        public static final int start=0x7f0c0011;
+        public static final int text=0x7f0c002b;
+        public static final int textView2=0x7f0c000f;
+        public static final int today_datestr_tv=0x7f0c0032;
+        public static final int today_expense_amount_tv=0x7f0c0033;
+        public static final int today_icon_fl=0x7f0c002e;
+        public static final int today_icon_iv=0x7f0c002f;
+        public static final int today_income_amount_tv=0x7f0c0034;
+        public static final int today_tv=0x7f0c0031;
+        public static final int tongzhi=0x7f0c001e;
+        public static final int tongzhi_text=0x7f0c001f;
+        public static final int tv_income=0x7f0c002c;
+        public static final int tv_outcome=0x7f0c002d;
+        public static final int userImg=0x7f0c0018;
+        public static final int userName=0x7f0c0019;
+        public static final int view3=0x7f0c0024;
+        public static final int viewpager_guidance=0x7f0c0000;
+        public static final int week_datestr_tv=0x7f0c0038;
+        public static final int week_expense_amount_tv=0x7f0c0039;
+        public static final int week_icon_fl=0x7f0c0035;
+        public static final int week_icon_iv=0x7f0c0036;
+        public static final int week_income_amount_tv=0x7f0c003a;
+        public static final int week_tv=0x7f0c0037;
     }
     public static final class layout {
         public static final int act_guide_layout=0x7f030000;
@@ -95,24 +230,31 @@ public final class R {
         public static final int act_guide_layout_pager3=0x7f030003;
         public static final int act_inputpass_layout=0x7f030004;
         public static final int act_launcher_layout=0x7f030005;
-        public static final int cu_loading_rotate=0x7f030006;
+        public static final int act_main_layout=0x7f030006;
+        public static final int act_main_leftmenu_layout=0x7f030007;
+        public static final int cu_loading_rotate=0x7f030008;
+        public static final int fragment_main_layout=0x7f030009;
+        public static final int fragment_test_layout=0x7f03000a;
     }
     public static final class menu {
-        public static final int launcher=0x7f0a0000;
+        public static final int main=0x7f0b0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f080001;
-        public static final int app_name=0x7f080000;
+        public static final int action_personal=0x7f090002;
+        public static final int action_settings=0x7f090001;
+        public static final int app_name=0x7f090000;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -126,16 +268,127 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f0a0000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
+        public static final int AppTheme=0x7f0a0001;
         /**  LoadingDialog style 
          */
-        public static final int CustomProgressDialog=0x7f090002;
+        public static final int CustomProgressDialog=0x7f0a0002;
     }
     public static final class xml {
         public static final int sysmbols=0x7f050000;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a MaterialMenuView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MaterialMenuView_mm_color com.haoxue.haoaccount:mm_color}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialMenuView_mm_pressedDuration com.haoxue.haoaccount:mm_pressedDuration}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialMenuView_mm_rtlEnabled com.haoxue.haoaccount:mm_rtlEnabled}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialMenuView_mm_scale com.haoxue.haoaccount:mm_scale}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialMenuView_mm_strokeWidth com.haoxue.haoaccount:mm_strokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #MaterialMenuView_mm_transformDuration com.haoxue.haoaccount:mm_transformDuration}</code></td><td></td></tr>
+           </table>
+           @see #MaterialMenuView_mm_color
+           @see #MaterialMenuView_mm_pressedDuration
+           @see #MaterialMenuView_mm_rtlEnabled
+           @see #MaterialMenuView_mm_scale
+           @see #MaterialMenuView_mm_strokeWidth
+           @see #MaterialMenuView_mm_transformDuration
+         */
+        public static final int[] MaterialMenuView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.haoxue.haoaccount.R.attr#mm_color}
+          attribute's value can be found in the {@link #MaterialMenuView} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.haoxue.haoaccount:mm_color
+        */
+        public static final int MaterialMenuView_mm_color = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.haoxue.haoaccount.R.attr#mm_pressedDuration}
+          attribute's value can be found in the {@link #MaterialMenuView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.haoxue.haoaccount:mm_pressedDuration
+        */
+        public static final int MaterialMenuView_mm_pressedDuration = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.haoxue.haoaccount.R.attr#mm_rtlEnabled}
+          attribute's value can be found in the {@link #MaterialMenuView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.haoxue.haoaccount:mm_rtlEnabled
+        */
+        public static final int MaterialMenuView_mm_rtlEnabled = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.haoxue.haoaccount.R.attr#mm_scale}
+          attribute's value can be found in the {@link #MaterialMenuView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.haoxue.haoaccount:mm_scale
+        */
+        public static final int MaterialMenuView_mm_scale = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.haoxue.haoaccount.R.attr#mm_strokeWidth}
+          attribute's value can be found in the {@link #MaterialMenuView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.haoxue.haoaccount:mm_strokeWidth
+        */
+        public static final int MaterialMenuView_mm_strokeWidth = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.haoxue.haoaccount.R.attr#mm_transformDuration}
+          attribute's value can be found in the {@link #MaterialMenuView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.haoxue.haoaccount:mm_transformDuration
+        */
+        public static final int MaterialMenuView_mm_transformDuration = 2;
+    };
 }
