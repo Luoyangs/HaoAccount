@@ -31,6 +31,7 @@
         <activity
             android:name="com.haoxue.haoaccount.act.PasswordSetAct"
             android:configChanges="keyboardHidden" />
+        <activity android:name="com.haoxue.haoaccount.act.AddIncomeAct" />
     </application>
 
 </manifest>

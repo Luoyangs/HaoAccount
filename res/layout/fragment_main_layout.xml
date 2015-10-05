@@ -84,6 +84,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <com.haoxue.haoaccount.view.RadialButtonLayout
+                android:layout_width="match_parent"
+                android:layout_height="210sp"
+                android:paddingBottom="20sp"
+                android:background="@drawable/b1" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="58sp"

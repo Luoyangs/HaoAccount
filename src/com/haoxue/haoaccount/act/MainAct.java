@@ -45,6 +45,7 @@ public class MainAct extends FragmentActivity {
 	/** 右边栏打开/关闭状态 */
 	private boolean isDirection_right = false;
 	private View showView;
+	private Fragment curFragment;// 当前面板
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +70,43 @@ public class MainAct extends FragmentActivity {
 		
 		if (savedInstanceState == null) {
 			Fragment fragment = new MainFragment();
-			getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+			switchToTargetFragment(fragment);
 		}
-
 	}
 	
-	
-	
+	public void switchToTargetFragment(Fragment target) {
+		this.switchToTargetFragment(curFragment, target);
+	}
+
+	private void switchToTargetFragment(Fragment from, Fragment to) {
+		if (curFragment != to) {
+			if (from == null) {
+				// 第一次添加页面
+				getSupportFragmentManager()
+						.beginTransaction()
+						.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+						.add(R.id.content_frame, to)
+						.commit();
+			} else {
+				// 判断是否添加过
+				if (!to.isAdded()) {
+					getSupportFragmentManager()
+							.beginTransaction()
+							.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+							.hide(from)
+							.add(R.id.content_frame, to).commit();
+				} else {
+					getSupportFragmentManager()
+							.beginTransaction()
+							.setCustomAnimations(R.anim.fade_in, R.anim.fade_out)
+							.hide(from)
+							.show(to)
+							.commit();
+				}
+			}
+			curFragment = to;
+		}
+	}
 	
 	/**
 	 * DrawerLayout状态变化监听
