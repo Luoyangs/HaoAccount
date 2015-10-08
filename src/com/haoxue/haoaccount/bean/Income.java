@@ -13,7 +13,7 @@ public class Income {
 	private int type;//类别:分别为收入，支出，预算
 	private int ptype;//收入父类别（外键）
 	private int ctype;//收入子类别（外键）
-	private String from;//收入来源（外键）
+	private String froms;//收入来源（外键）
 	private String save;//存储账户（外键）
 	private String info;//收入备注
 	private String date;//收入时间
@@ -55,10 +55,10 @@ public class Income {
 		this.ctype = ctype;
 	}
 	public String getFrom() {
-		return from;
+		return froms;
 	}
-	public void setFrom(String from) {
-		this.from = from;
+	public void setFrom(String froms) {
+		this.froms = froms;
 	}
 	public String getSave() {
 		return save;

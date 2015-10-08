@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -32,6 +32,10 @@
             android:name="com.haoxue.haoaccount.act.PasswordSetAct"
             android:configChanges="keyboardHidden" />
         <activity android:name="com.haoxue.haoaccount.act.AddIncomeAct" />
+        <activity android:name="com.haoxue.haoaccount.act.PrepayAct" />
+        <activity android:name="com.haoxue.haoaccount.act.PrepayLayerAct" />
+        <activity android:name="com.haoxue.haoaccount.act.SetAct" />
+        <activity android:name="com.haoxue.haoaccount.act.TestAct" />
     </application>
 
 </manifest>

@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="210sp"
                 android:paddingBottom="20sp"
-                android:background="@drawable/b1" />
+                android:background="@drawable/bg1" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

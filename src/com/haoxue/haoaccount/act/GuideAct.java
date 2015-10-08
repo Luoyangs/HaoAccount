@@ -86,7 +86,7 @@ public class GuideAct extends Activity implements OnPageChangeListener{
 				
 				@Override
 				public void run() {
-					if (ShareDataHelper.getInstance(GuideAct.this).getSetBoolParam(Constant.SHOW_PASS_SET)) {
+					if (ShareDataHelper.getInstance(GuideAct.this).getPassSet(Constant.SHOW_PASS_SET)) {
 						startActivity(new Intent(GuideAct.this, PasswordSetAct.class));
 						finish();
 					}else{

@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10" />
-
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+ <TextView  
+    android:id="@+id/time_tv"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="">
+ </TextView>
+    
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
-    <com.haoxue.haoaccount.view.RadialButtonLayout
-        android:layout_width="match_parent"
-        android:layout_height="400sp" />
-
+     android:id="@+id/pick_bt"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="时间选择器"
+     android:onClick="buttonClick">
+    </Button>
 </LinearLayout>

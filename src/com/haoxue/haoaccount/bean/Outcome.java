@@ -13,7 +13,7 @@ public class Outcome {
 	private int type;//类别:分别为收入，支出，预算
 	private int ptype;//支出父类别（外键）
 	private int ctype;//支出子类别（外键）
-	private String from;//支出来源（外键）
+	private String froms;//支出来源（外键）
 	private String use;//支出去向
 	private String info;//支出备注
 	private String date;//支出时间
@@ -55,10 +55,10 @@ public class Outcome {
 		this.ctype = ctype;
 	}
 	public String getFrom() {
-		return from;
+		return froms;
 	}
-	public void setFrom(String from) {
-		this.from = from;
+	public void setFrom(String froms) {
+		this.froms = froms;
 	}
 	public String getUse() {
 		return use;

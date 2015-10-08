@@ -9,6 +9,7 @@ public class Ptype {
 
 	private int id;//ID
 	private String name;//名称
+	private String img;//图片
 	private int type;//总类别
 	private int state;//状态
 	
@@ -35,6 +36,12 @@ public class Ptype {
 	}
 	public void setState(int state) {
 		this.state = state;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 }

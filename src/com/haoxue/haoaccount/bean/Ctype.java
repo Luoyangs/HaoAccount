@@ -9,7 +9,8 @@ public class Ctype {
 
 	private int id;//ID
 	private String name;//名称
-	private int type;//总类别
+	private String img;//图片
+	private int type;//类别
 	private int ptype;//父类别
 	private int state;//状态
 	
@@ -25,12 +26,6 @@ public class Ctype {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getType() {
-		return type;
-	}
-	public void setType(int type) {
-		this.type = type;
-	}
 	public int getPtype() {
 		return ptype;
 	}
@@ -42,6 +37,18 @@ public class Ctype {
 	}
 	public void setState(int state) {
 		this.state = state;
+	}
+	public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 }

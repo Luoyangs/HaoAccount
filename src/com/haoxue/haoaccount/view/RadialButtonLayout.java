@@ -2,6 +2,8 @@ package com.haoxue.haoaccount.view;
 
 import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.act.AddIncomeAct;
+import com.haoxue.haoaccount.act.PrepayAct;
+import com.haoxue.haoaccount.act.TestAct;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -77,12 +79,7 @@ public class RadialButtonLayout extends FrameLayout {
     public void onMainButtonClicked( final View btn ) {
         if ( isOpen ) {
             // close
-            hide(btnOrange);
-            hide(btnYellow);
-            hide(btnGreen);
-            hide(btnBlue);
-            hide(btnIndigo);
-            isOpen = false;
+        	close();
         } else {
             show(btnOrange, 1, 300);
             show(btnYellow, 2, 300);
@@ -94,16 +91,28 @@ public class RadialButtonLayout extends FrameLayout {
         btn.playSoundEffect( SoundEffectConstants.CLICK);
     }
 
+    private void close(){
+    	hide(btnOrange);
+        hide(btnYellow);
+        hide(btnGreen);
+        hide(btnBlue);
+        hide(btnIndigo);
+        isOpen = false;
+    }
+    
     @OnClick({ R.id.btn_orange, R.id.btn_yellow, R.id.btn_green, R.id.btn_blue, R.id.btn_indigo})
     public void onButtonClicked( final View btn ) {
         switch ( btn.getId() ) {
             case R.id.btn_orange:
-                context.startActivity(new Intent(getContext(),AddIncomeAct.class));
+            	Intent intent = new Intent(getContext(),AddIncomeAct.class);
+            	intent.putExtra("isEdit", 0);
+                context.startActivity(intent);
                 break;
             case R.id.btn_yellow:
-            	
+            	context.startActivity(new Intent(getContext(),PrepayAct.class));
                 break;
             case R.id.btn_green:
+            	context.startActivity(new Intent(getContext(),TestAct.class));
                 break;
             case R.id.btn_blue:
                 break;
@@ -112,6 +121,7 @@ public class RadialButtonLayout extends FrameLayout {
             default:
             	break;
         }
+        close();
         btn.playSoundEffect( SoundEffectConstants.CLICK);
     }
 

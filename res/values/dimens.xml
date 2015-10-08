@@ -7,4 +7,5 @@
     <!-- DrawerLayout -->
     <dimen name="mm_up_arrow_margin">-16dp</dimen>
     <dimen name="tab_top_fontsize">15sp</dimen>
+    <dimen name="bbuton_rounded_corner_radius">5dp</dimen>
 </resources>

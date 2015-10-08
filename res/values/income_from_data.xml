@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="income_from">
-        <item>年龄都不是问题</item>
-        <item>10</item>
-		<item>00</item>
-		<item>90</item>
-		<item>80</item>
-		<item>70</item>
-		<item>60</item>
-		<item>50</item>
-		<item>40</item>
+        <item>现金(CNY)</item>
+        <item>信用卡</item>
+		<item>银行卡</item>
+		<item>饭卡</item>
+		<item>支付宝</item>
+		<item>余额宝</item>
+		<item>公司报销</item>
+		<item>基金账户</item>
+		<item>股票账户</item>
+		<item>工程款项</item>
+		<item>其他来源</item>
 	</string-array>
 </resources>

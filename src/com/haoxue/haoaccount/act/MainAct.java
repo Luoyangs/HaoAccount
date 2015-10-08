@@ -7,8 +7,11 @@ import com.haoxue.haoaccount.view.materialmenu.MaterialMenuIcon;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import com.haoxue.haoaccount.R;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -74,6 +77,18 @@ public class MainAct extends FragmentActivity {
 		}
 	}
 	
+	@OnClick(R.id.set)
+	public void onSetOnclick(View view){
+		closeLeftMenu();
+		startActivity(new Intent(this,SetAct.class));
+	}
+	
+	private void closeLeftMenu(){
+		if (showView == left_drawer) {
+			mDrawerLayout.closeDrawer(left_drawer);
+		}
+	}
+	
 	public void switchToTargetFragment(Fragment target) {
 		this.switchToTargetFragment(curFragment, target);
 	}
@@ -122,11 +137,11 @@ public class MainAct extends FragmentActivity {
 				mMaterialMenuIcon.setTransformationOffset(
 						MaterialMenuDrawable.AnimationState.BURGER_ARROW,
 						isDirection_left ? 2 - slideOffset : slideOffset);
-			} else if (drawerView == right_drawer) {// 根据isDirection_right决定执行动画
+			} /*else if (drawerView == right_drawer) {// 根据isDirection_right决定执行动画
 				mMaterialMenuIcon.setTransformationOffset(
 						MaterialMenuDrawable.AnimationState.BURGER_ARROW,
 						isDirection_right ? 2 - slideOffset : slideOffset);
-			}
+			}*/
 		}
 
 		/**
@@ -136,9 +151,9 @@ public class MainAct extends FragmentActivity {
 		public void onDrawerOpened(android.view.View drawerView) {
 			if (drawerView == left_drawer) {
 				isDirection_left = true;
-			} else if (drawerView == right_drawer) {
+			} /*else if (drawerView == right_drawer) {
 				isDirection_right = true;
-			}
+			}*/
 		}
 
 		/**
@@ -148,10 +163,10 @@ public class MainAct extends FragmentActivity {
 		public void onDrawerClosed(android.view.View drawerView) {
 			if (drawerView == left_drawer) {
 				isDirection_left = false;
-			} else if (drawerView == right_drawer) {
+			} /*else if (drawerView == right_drawer) {
 				isDirection_right = false;
 				showView = left_drawer;
-			}
+			}*/
 		}
 	}
 	

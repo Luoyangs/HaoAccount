@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@color/base_green"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/titilbar_left"
+            android:layout_width="30dp"
+            android:layout_height="30sp"
+            android:layout_marginRight="14sp"
+            android:background="@drawable/ic_back_light"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp" />
+
+        <TextView
+            android:id="@+id/titilbar_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:text="二级预算"
+            android:textColor="#fff"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/titilbar_right"
+            android:layout_width="36sp"
+            android:layout_height="50sp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="#eee"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="84sp"
+                android:background="#eee"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="66sp"
+                    android:layout_height="66sp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20sp"
+                    android:paddingTop="6sp"
+                    android:src="@drawable/pp1" />
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/img"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="12sp"
+                    android:layout_toRightOf="@+id/img"
+                    android:text="衣服饰品"
+                    android:textColor="#444"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/num"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="10sp"
+                    android:layout_below="@+id/type"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="6sp"
+                    android:layout_toRightOf="@+id/img"
+                    android:max="100"
+                    android:progress="40"
+                    android:progressDrawable="@drawable/progressbar_base" />
+
+                <TextView
+                    android:id="@+id/pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/num"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="6sp"
+                    android:layout_toRightOf="@+id/img"
+                    android:text="已用 0.00"
+                    android:textColor="#999"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/pre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/pay"
+                    android:layout_marginRight="10dp"
+                    android:text="预算  0.00"
+                    android:textColor="#999"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#ccc" />
+
+            <com.haoxue.haoaccount.view.CuListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="#ddd"
+                android:background="#eee"
+                android:dividerHeight="1px"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

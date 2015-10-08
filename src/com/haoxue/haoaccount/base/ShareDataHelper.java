@@ -62,8 +62,15 @@ public final class ShareDataHelper {
 		editor.commit();
 	}
 	
-	/**获取设置信息*/
-	public boolean getSetBoolParam(String key){
+	/**保存密码设置*/
+	public void savePassSet(String key, boolean value){
+		Editor editor = setshare.edit();
+    	editor.putBoolean(key, value);
+		editor.commit();
+	}
+	
+	/**获取密码设置*/
+	public boolean getPassSet(String key){
 		return setshare.getBoolean(key, true);
 	}
 	

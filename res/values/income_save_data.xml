@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="income_save">
-        <item>年龄都不是问题</item>
-        <item>10</item>
-		<item>00</item>
-		<item>90</item>
-		<item>80</item>
-		<item>70</item>
-		<item>60</item>
-		<item>50</item>
-		<item>40</item>
+        <item>私人账户</item>
+        <item>老公账本</item>
+		<item>老婆账本</item>
+		<item>子女账户</item>
+		<item>父母账户</item>
+		<item>家庭公用</item>
+		<item>其它账户</item>
 	</string-array>
 </resources>

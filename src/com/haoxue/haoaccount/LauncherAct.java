@@ -1,8 +1,11 @@
 package com.haoxue.haoaccount;
 
 import com.haoxue.haoaccount.act.GuideAct;
+import com.haoxue.haoaccount.act.MainAct;
 import com.haoxue.haoaccount.act.PasswordSetAct;
+import com.haoxue.haoaccount.base.Constant;
 import com.haoxue.haoaccount.base.ShareDataHelper;
+import com.haoxue.haoaccount.util.ToastUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -49,14 +52,21 @@ public class LauncherAct extends Activity {
 			@Override
 			public void run() {
 				isFirstIn = ShareDataHelper.getInstance(LauncherAct.this).getLoadingInfo();
+				boolean showPassSet = ShareDataHelper.getInstance(LauncherAct.this).getPassSet(Constant.SHOW_PASS_SET);
 				if (isFirstIn) {
 					startActivity(new Intent(LauncherAct.this,GuideAct.class));
 					overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 					finish();
 				}else{
-					startActivity(new Intent(LauncherAct.this,PasswordSetAct.class));
-					overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-					finish();
+					if (showPassSet) {
+						startActivity(new Intent(LauncherAct.this,PasswordSetAct.class));
+						overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+						finish();
+					}else{
+						startActivity(new Intent(LauncherAct.this,MainAct.class));
+						overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+						finish();
+					}
 				}
 			}
 		}, 3600);

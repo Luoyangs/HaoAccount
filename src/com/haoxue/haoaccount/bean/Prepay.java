@@ -13,7 +13,7 @@ public class Prepay {
 	private int type;//类别:分别为收入，支出，预算
 	private int ptype;//预算父类别（外键）
 	private int ctype;//预算子类别（外键）
-	private String from;//预算来源
+	private String froms;//预算来源
 	private String use;//预算用途
 	private String info;//收入备注
 	private String date;//收入时间
@@ -55,10 +55,10 @@ public class Prepay {
 		this.ctype = ctype;
 	}
 	public String getFrom() {
-		return from;
+		return froms;
 	}
-	public void setFrom(String from) {
-		this.from = from;
+	public void setFrom(String froms) {
+		this.froms = froms;
 	}
 	public String getUse() {
 		return use;
