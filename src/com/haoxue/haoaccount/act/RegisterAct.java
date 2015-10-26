@@ -345,7 +345,7 @@ public class RegisterAct extends Activity {
 							values.put("info", info.getText().toString().trim());
 						}
 						if (id >0 && values.size() >0) {
-							database.update(Constant.DB.USER_TABLE_NAME, values, "id", new String[]{String.valueOf(id)});
+							database.update(Constant.DB.USER_TABLE_NAME, values, "id=?", new String[]{String.valueOf(id)});
 						}
 						View contentView = inflater.inflate(R.layout.view_register_ok_layout, null);
 						((TextView) contentView.findViewById(R.id.tv_name)).setText(reg_menu?emailStr:phoneStr);
