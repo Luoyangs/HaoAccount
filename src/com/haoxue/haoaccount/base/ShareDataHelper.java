@@ -1,5 +1,8 @@
 package com.haoxue.haoaccount.base;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -15,6 +18,8 @@ public final class ShareDataHelper {
 	private SharedPreferences appshare;
 	/**程序设置*/
 	private SharedPreferences setshare;
+	/**用户设置*/
+	private SharedPreferences usershare;
 
 	private static ShareDataHelper instance = null;
 	
@@ -29,6 +34,7 @@ public final class ShareDataHelper {
 		//初始化操作
 		appshare = context.getSharedPreferences("appshare", Context.MODE_PRIVATE);
 		setshare = context.getSharedPreferences("setshare", Context.MODE_PRIVATE);
+		usershare = context.getSharedPreferences("usershare", Context.MODE_PRIVATE);
 	}
 	
 	/**保存登录信息（是否第一次初始化程序）*/
@@ -55,6 +61,18 @@ public final class ShareDataHelper {
 		return appshare.getString(key, "");
 	}
 	
+	/**保存刷新加载信息*/
+	public void savePullToRefreshTime(String key,String value){
+		Editor editor = appshare.edit();
+    	editor.putString(key, value);
+		editor.commit();
+	}
+	
+	/**获取刷新加载信息*/
+	public String getPullToRefreshTime(String key){
+		return appshare.getString(key, new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss").format(new Date()));
+	}
+	
 	/**保存设置信息*/
 	public void saveSetParams(String key,String value){
 		Editor editor = setshare.edit();
@@ -77,5 +95,17 @@ public final class ShareDataHelper {
 	/**获取设置信息*/
 	public String getSetStringParam(String key){
 		return setshare.getString(key, "");
+	}
+	
+	/**保存用户信息*/
+	public void saveUser(String key, String value){
+		Editor editor = usershare.edit();
+    	editor.putString(key, value);
+		editor.commit();
+	}
+	
+	/**获取用户信息*/
+	public String getUser(String key){
+		return usershare.getString(key, "");
 	}
 }

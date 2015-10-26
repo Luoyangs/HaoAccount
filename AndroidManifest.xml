@@ -14,6 +14,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
         <activity
             android:name="com.haoxue.haoaccount.LauncherAct"
@@ -32,9 +33,14 @@
             android:name="com.haoxue.haoaccount.act.PasswordSetAct"
             android:configChanges="keyboardHidden" />
         <activity android:name="com.haoxue.haoaccount.act.AddIncomeAct" />
+        <activity android:name="com.haoxue.haoaccount.act.AddOutcomeAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayLayerAct" />
-        <activity android:name="com.haoxue.haoaccount.act.SetAct" />
+        <activity android:name="com.haoxue.haoaccount.act.DayBalanceAct" />
+        <activity android:name="com.haoxue.haoaccount.act.SetAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.LoginAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.RegisterAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.UserInfoAct"/>
         <activity android:name="com.haoxue.haoaccount.act.TestAct" />
     </application>
 

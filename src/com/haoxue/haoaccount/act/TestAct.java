@@ -45,7 +45,6 @@ public class TestAct extends Activity {
 			
 			@Override
 			public void onClick(View view) {
-				//set();
 				set0();
 				set00();
 			}
@@ -65,28 +64,6 @@ public class TestAct extends Activity {
 		while (cursor.moveToNext()) {
 			String id = String.valueOf(cursor.getInt(cursor.getColumnIndex("id")));
 			String name = cursor.getString(cursor.getColumnIndex("num"));
-			string = string +id+"\t"+ name + "\n";
-		}
-		textView.setText(string);
-	}
-	
-	private void set(){
-		helper = new SQLiteHelper(TestAct.this, Constant.DB.CTYPE_TABLE_NAME, Constant.DB.CTYPE_TABLE_CREATE);
-		SQLiteDatabase database = helper.getWritableDatabase();
-		List<String> list = getList11();
-		/*for (int i = 0; i < list.size(); i++) {
-			//String sql = "insert into TYPE_TABLE(name,state) values('"+list.get(i)+"', 0)";
-			//String sql = "insert into PTYPE_TABLE(name,type,state) values('"+list.get(i)+"',1, 0)";
-			String sql = "insert into CTYPE_TABLE(name,ptype,state) values('"+list.get(i)+"',1, 0)";
-			database.execSQL(sql);
-		}*/
-	
-		//String string = "SELECT * FROM TYPE_TABLE";
-		String string = "SELECT * FROM PTYPE_TABLE";
-		Cursor cursor = database.rawQuery(string, null);  
-		while (cursor.moveToNext()) {
-			String id = String.valueOf(cursor.getInt(cursor.getColumnIndex("id")));
-			String name = cursor.getString(cursor.getColumnIndex("name"));
 			string = string +id+"\t"+ name + "\n";
 		}
 		textView.setText(string);

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@color/base_green"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/titilbar_left"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginRight="14sp"
+            android:background="@drawable/btn_back"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp" />
+
+        <TextView
+            android:id="@+id/titilbar_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:text="10月11日"
+            android:textColor="#cd5b45"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/titilbar_right"
+            android:layout_width="36sp"
+            android:layout_height="50sp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="#eee"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="34sp"
+                android:background="@color/base_green"
+                android:gravity="center"
+                android:text="结余"
+                android:textColor="#cd5b45" />
+
+            <TextView
+                android:id="@+id/day_balance"
+                android:layout_width="fill_parent"
+                android:layout_height="56sp"
+                android:background="@color/base_green"
+                android:gravity="center"
+                android:text="78.00"
+                android:textColor="#cd5b45"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#aaa" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/base_green"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="36sp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20sp"
+                    android:paddingRight="10sp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/base_green"
+                        android:gravity="left|center_vertical"
+                        android:text="收入"
+                        android:textColor="#cd5b45"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/day_in"
+                        android:layout_width="0sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/base_green"
+                        android:gravity="right|center_vertical"
+                        android:text="78.00"
+                        android:textColor="#cd5b45"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="#aaa" />
+
+                <LinearLayout
+                    android:layout_width="0sp"
+                    android:layout_height="34sp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10sp"
+                    android:paddingRight="10sp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@color/base_green"
+                        android:gravity="left|center_vertical"
+                        android:text="支出"
+                        android:textColor="#cd5b45"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/day_out"
+                        android:layout_width="0sp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/base_green"
+                        android:gravity="right|center_vertical"
+                        android:text="78.00"
+                        android:textColor="#cd5b45"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.haoxue.haoaccount.view.CuListView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -5,7 +5,6 @@ import com.haoxue.haoaccount.act.MainAct;
 import com.haoxue.haoaccount.act.PasswordSetAct;
 import com.haoxue.haoaccount.base.Constant;
 import com.haoxue.haoaccount.base.ShareDataHelper;
-import com.haoxue.haoaccount.util.ToastUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.ViewInject;

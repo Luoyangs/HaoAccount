@@ -12,8 +12,8 @@ public final class R {
 		public static final int error_x_in = 0x7f040001;
 		public static final int modal_in = 0x7f040004;
 		public static final int modal_out = 0x7f040005;
-		public static final int success_bow_roate = 0x7f040008;
-		public static final int success_mask_layout = 0x7f040009;
+		public static final int success_bow_roate = 0x7f04000c;
+		public static final int success_mask_layout = 0x7f04000d;
 	}
 	public static final class attr {
 		public static final int fromDeg = 0x7f010001;
@@ -59,39 +59,39 @@ public final class R {
 		public static final int progress_circle_radius = 0x7f080002;
 	}
 	public static final class drawable {
-		public static final int blue_button_background = 0x7f020013;
-		public static final int dialog_background = 0x7f02002c;
-		public static final int error_center_x = 0x7f020034;
-		public static final int error_circle = 0x7f020035;
-		public static final int gray_button_background = 0x7f020044;
-		public static final int red_button_background = 0x7f020090;
-		public static final int success_bow = 0x7f0200a8;
-		public static final int success_circle = 0x7f0200a9;
-		public static final int warning_circle = 0x7f0200bb;
-		public static final int warning_sigh = 0x7f0200bc;
+		public static final int blue_button_background = 0x7f020018;
+		public static final int dialog_background = 0x7f02003a;
+		public static final int error_center_x = 0x7f020042;
+		public static final int error_circle = 0x7f020043;
+		public static final int gray_button_background = 0x7f020054;
+		public static final int red_button_background = 0x7f0200b5;
+		public static final int success_bow = 0x7f0200d6;
+		public static final int success_circle = 0x7f0200d7;
+		public static final int warning_circle = 0x7f0200f0;
+		public static final int warning_sigh = 0x7f0200f1;
 	}
 	public static final class id {
-		public static final int cancel_button = 0x7f06005e;
-		public static final int confirm_button = 0x7f06005f;
-		public static final int content_text = 0x7f06005d;
-		public static final int custom_image = 0x7f060052;
-		public static final int error_frame = 0x7f060053;
-		public static final int error_x = 0x7f060054;
-		public static final int loading = 0x7f060051;
-		public static final int mask_left = 0x7f060057;
-		public static final int mask_right = 0x7f060056;
-		public static final int progressWheel = 0x7f06005b;
-		public static final int progress_dialog = 0x7f06005a;
-		public static final int success_frame = 0x7f060055;
-		public static final int success_tick = 0x7f060058;
-		public static final int title_text = 0x7f06005c;
-		public static final int warning_frame = 0x7f060059;
+		public static final int cancel_button = 0x7f060092;
+		public static final int confirm_button = 0x7f060093;
+		public static final int content_text = 0x7f060091;
+		public static final int custom_image = 0x7f060086;
+		public static final int error_frame = 0x7f060087;
+		public static final int error_x = 0x7f060088;
+		public static final int loading = 0x7f060085;
+		public static final int mask_left = 0x7f06008b;
+		public static final int mask_right = 0x7f06008a;
+		public static final int progressWheel = 0x7f06008f;
+		public static final int progress_dialog = 0x7f06008e;
+		public static final int success_frame = 0x7f060089;
+		public static final int success_tick = 0x7f06008c;
+		public static final int title_text = 0x7f060090;
+		public static final int warning_frame = 0x7f06008d;
 		public static final int x = 0x7f060000;
 		public static final int y = 0x7f060001;
 		public static final int z = 0x7f060002;
 	}
 	public static final class layout {
-		public static final int alert_dialog = 0x7f03000d;
+		public static final int alert_dialog = 0x7f030012;
 	}
 	public static final class string {
 		public static final int LOADING = 0x7f090004;

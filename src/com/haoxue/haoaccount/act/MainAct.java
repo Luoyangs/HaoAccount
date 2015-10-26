@@ -1,6 +1,7 @@
 package com.haoxue.haoaccount.act;
 
 import com.haoxue.haoaccount.act.frag.MainFragment;
+import com.haoxue.haoaccount.base.ShareDataHelper;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuDrawable;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuDrawable.Stroke;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuIcon;
@@ -21,7 +22,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
  *  说明：主页
@@ -37,10 +40,13 @@ public class MainAct extends FragmentActivity {
 	/** 左边栏菜单 */
 	@ViewInject(R.id.left_drawer)
 	private RelativeLayout left_drawer;
+	@ViewInject(R.id.userImg)
+	private ImageView userImg;
+	@ViewInject(R.id.userName)
+	private TextView userName;
 	/** 右边栏 */
 	@ViewInject(R.id.right_drawer)
 	private RelativeLayout right_drawer;
-	
 	/** Material Design风格 */
 	private MaterialMenuIcon mMaterialMenuIcon;
 	/** 菜单打开/关闭状态 */
@@ -81,6 +87,18 @@ public class MainAct extends FragmentActivity {
 	public void onSetOnclick(View view){
 		closeLeftMenu();
 		startActivity(new Intent(this,SetAct.class));
+	}
+	
+	@OnClick(R.id.userImg)
+	public void login(View view){
+		String user = ShareDataHelper.getInstance(MainAct.this).getUser("user");
+		if (user == null || user.equals("")) {
+			closeLeftMenu();
+			startActivity(new Intent(MainAct.this,LoginAct.class));
+		}else{
+			closeLeftMenu();
+			startActivity(new Intent(MainAct.this,UserInfoAct.class));
+		}
 	}
 	
 	private void closeLeftMenu(){

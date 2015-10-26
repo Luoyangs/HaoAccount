@@ -64,11 +64,11 @@ public class ListViewAdapter3 extends BaseAdapter{
         ProgressBar bar = (ProgressBar)convertView.findViewById(R.id.num);
         img.setImageDrawable(util.getDrawableByName(map.get("img")));
         type.setText(map.get("name"));
-        payout.setText("已用 "+ new DecimalFormat(".00").format(Float.parseFloat(map.get("payout"))));
-        prepay.setText("预算 "+ new DecimalFormat(".00").format(Float.parseFloat(map.get("num"))));
-        bar.setMax(Integer.parseInt(map.get("num")));
-        bar.setProgress(Integer.parseInt(map.get("payout")));
-        if (Integer.parseInt(map.get("payout")) >0 || Integer.parseInt(map.get("num")) >0) {
+        payout.setText("已用 "+ new DecimalFormat("0.00").format(Float.parseFloat(map.get("payout"))));
+        prepay.setText("预算 "+ new DecimalFormat("0.00").format(Float.parseFloat(map.get("num"))));
+        bar.setMax((int)Float.parseFloat(map.get("num")));
+        bar.setProgress((int)Float.parseFloat(map.get("payout")));
+        if (((int)Float.parseFloat(map.get("payout"))) >0 || ((int)Float.parseFloat(map.get("num"))) >0) {
         	bar.setProgressDrawable(context.getResources().getDrawable(R.drawable.progressbar_color));
 		}else{
 			bar.setProgressDrawable(context.getResources().getDrawable(R.drawable.progressbar_base));

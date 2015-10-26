@@ -1,83 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.handmark.pulltorefresh.PullToRefreshScrollView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pull_refresh_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:scrollbars="none"
+    ptr:ptrAnimationStyle="flip"
+    ptr:ptrMode="both" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120sp"
-        android:background="@color/base_gray"
-        android:orientation="horizontal" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="0sp"
-            android:layout_height="118sp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="vertical" >
+            android:layout_width="match_parent"
+            android:layout_height="120sp"
+            android:background="@color/base_green"
+            android:orientation="horizontal" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="120sp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="收入"
-                android:textColor="@color/base_dark"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/tv_income"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15sp"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="收入"
+                    android:textColor="#cd5b45"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:gravity="center"
+                    android:text="120.45￥"
+                    android:textColor="#00ff00"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:background="@color/base_gray" />
+
+            <LinearLayout
+                android:layout_width="0sp"
+                android:layout_height="120sp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="120.45￥"
-                android:textColor="#00ff00"
-                android:textSize="26sp"
-                android:textStyle="bold" />
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="支出"
+                    android:textColor="#cd5b45"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_outcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15sp"
+                    android:gravity="center"
+                    android:text="-220.45￥"
+                    android:textColor="#ff0000"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
         <View
-            android:layout_width="2px"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="2px"
             android:background="@color/base_gray" />
-
-        <LinearLayout
-            android:layout_width="0sp"
-            android:layout_height="118sp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="支出"
-                android:textColor="@color/base_dark"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_outcome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15sp"
-                android:gravity="center"
-                android:text="-220.45￥"
-                android:textColor="#ff0000"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,10 +94,11 @@
             <com.haoxue.haoaccount.view.RadialButtonLayout
                 android:layout_width="match_parent"
                 android:layout_height="210sp"
-                android:paddingBottom="20sp"
-                android:background="@drawable/bg1" />
+                android:background="@drawable/bg1"
+                android:paddingBottom="20sp" />
 
             <RelativeLayout
+                android:id="@+id/day_info"
                 android:layout_width="match_parent"
                 android:layout_height="58sp"
                 android:layout_marginTop="20sp"
@@ -182,6 +190,7 @@
                 android:background="@color/base_gray" />
 
             <RelativeLayout
+                android:id="@+id/week_info"
                 android:layout_width="match_parent"
                 android:layout_height="58sp"
                 android:background="@drawable/select_bg"
@@ -271,6 +280,7 @@
                 android:background="@color/base_gray" />
 
             <RelativeLayout
+                android:id="@+id/month_info"
                 android:layout_width="match_parent"
                 android:layout_height="58sp"
                 android:background="@drawable/select_bg"
@@ -371,6 +381,6 @@
                 android:layout_height="200sp"
                 android:layout_marginBottom="20sp" />
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
-</LinearLayout>
+</com.handmark.pulltorefresh.PullToRefreshScrollView>

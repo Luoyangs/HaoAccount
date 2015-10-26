@@ -2,6 +2,7 @@ package com.haoxue.haoaccount.view;
 
 import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.act.AddIncomeAct;
+import com.haoxue.haoaccount.act.AddOutcomeAct;
 import com.haoxue.haoaccount.act.PrepayAct;
 import com.haoxue.haoaccount.act.TestAct;
 import com.lidroid.xutils.ViewUtils;
@@ -109,12 +110,13 @@ public class RadialButtonLayout extends FrameLayout {
                 context.startActivity(intent);
                 break;
             case R.id.btn_yellow:
-            	context.startActivity(new Intent(getContext(),PrepayAct.class));
+            	context.startActivity(new Intent(getContext(),AddOutcomeAct.class));
                 break;
             case R.id.btn_green:
-            	context.startActivity(new Intent(getContext(),TestAct.class));
+            	context.startActivity(new Intent(getContext(),PrepayAct.class));
                 break;
             case R.id.btn_blue:
+            	context.startActivity(new Intent(getContext(),TestAct.class));
                 break;
             case R.id.btn_indigo:
                 break;

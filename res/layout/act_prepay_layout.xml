@@ -12,10 +12,10 @@
 
         <Button
             android:id="@+id/titilbar_left"
-            android:layout_width="30dp"
-            android:layout_height="30sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
             android:layout_marginRight="14sp"
-            android:background="@drawable/ic_back_light"
+            android:background="@drawable/btn_back"
             android:paddingLeft="20sp"
             android:paddingRight="20sp" />
 
@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical|left"
             android:text="设置预算"
-            android:textColor="#fff"
+            android:textColor="#cd5b45"
             android:textSize="24sp" />
 
         <Button
@@ -36,20 +36,24 @@
             android:visibility="invisible" />
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="fill_parent"
+    <com.handmark.pulltorefresh.PullToRefreshScrollView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pull_refresh_scrollview"
+        android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
         android:background="#eee"
-        android:scrollbars="none" >
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip" >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:orientation="vertical"
-            android:focusable="true"  
-			android:focusableInTouchMode="true"    >
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
 
             <TextView
                 android:layout_width="fill_parent"
@@ -60,11 +64,11 @@
                 android:textColor="#cd5b45" />
 
             <TextView
+                android:id="@+id/totalsum"
                 android:layout_width="fill_parent"
                 android:layout_height="56sp"
                 android:background="@color/base_green"
                 android:gravity="center"
-                android:text="78.00"
                 android:textColor="#cd5b45"
                 android:textSize="34sp"
                 android:textStyle="bold" />
@@ -99,12 +103,12 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/paysum"
                         android:layout_width="0sp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/base_green"
                         android:gravity="right|center_vertical"
-                        android:text="78.00"
                         android:textColor="#cd5b45"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -132,12 +136,12 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/presum"
                         android:layout_width="0sp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/base_green"
                         android:gravity="right|center_vertical"
-                        android:text="78.00"
                         android:textColor="#cd5b45"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -151,6 +155,6 @@
                 android:dividerHeight="1px"
                 android:scrollbars="none" />
         </LinearLayout>
-    </ScrollView>
+    </com.handmark.pulltorefresh.PullToRefreshScrollView>
 
 </LinearLayout>
