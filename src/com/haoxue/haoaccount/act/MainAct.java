@@ -91,8 +91,7 @@ public class MainAct extends FragmentActivity {
 	
 	@OnClick(R.id.userImg)
 	public void login(View view){
-		String user = ShareDataHelper.getInstance(MainAct.this).getUser("user");
-		if (user == null || user.equals("")) {
+		if (!ShareDataHelper.getInstance(MainAct.this).hasLogin()) {
 			closeLeftMenu();
 			startActivity(new Intent(MainAct.this,LoginAct.class));
 		}else{

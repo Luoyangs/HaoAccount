@@ -77,7 +77,7 @@ public class PrepayLayerAct extends Activity {
 		ViewUtils.inject(this);
 		//初始化操作
 		Intent intent = getIntent();
-		img.setImageDrawable(new FileUtil(this).getDrawableByName(intent.getStringExtra("img")));
+		img.setImageDrawable(FileUtil.getDrawableByName(this,intent.getStringExtra("img")));
 		pid = Integer.parseInt(intent.getStringExtra("pid"));
 		ptype.setText(intent.getStringExtra("name"));
 		pay.setText("已用 "+ new DecimalFormat("0.00").format(Float.parseFloat(intent.getStringExtra("payout"))));

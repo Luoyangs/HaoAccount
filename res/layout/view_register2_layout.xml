@@ -1,357 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none" >
+    android:background="#FFFFFF" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/reg_menu1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="26dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="8dip"
+        android:text="设置一个专属你的密码~"
+        android:textColor="#D95555"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/diviver"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/reg_menu1"
+        android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:orientation="vertical" >
+        android:background="#D95555" />
 
-        <TextView
-            android:id="@+id/login_menu"
-            android:layout_width="match_parent"
-            android:layout_height="40.0dip"
-            android:layout_marginTop="26dp"
-            android:gravity="left|center_vertical"
-            android:padding="8dip"
-            android:text="完善信息将获得更多活动~"
-            android:textColor="#888888"
-            android:textSize="16sp" />
+    <com.haoxue.haoaccount.view.DeletableEditText
+        android:id="@+id/user_password_input"
+        android:layout_width="wrap_content"
+        android:layout_height="48dip"
+        android:layout_alignLeft="@id/diviver"
+        android:layout_alignRight="@id/diviver"
+        android:layout_below="@id/diviver"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/edittext_bg"
+        android:drawableLeft="@drawable/user_password"
+        android:drawableRight="@drawable/user_delete"
+        android:ems="10"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:paddingLeft="4dip"
+        android:paddingRight="4dip"
+        android:singleLine="true" >
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#D95555" />
+        <requestFocus />
+    </com.haoxue.haoaccount.view.DeletableEditText>
 
-        <LinearLayout
-            android:id="@+id/personal_icon"
-            android:layout_width="fill_parent"
-            android:layout_height="68.0dip" >
+    <com.haoxue.haoaccount.view.DeletableEditText
+        android:id="@+id/user_password_input2"
+        android:layout_width="wrap_content"
+        android:layout_height="48dip"
+        android:layout_alignLeft="@id/user_password_input"
+        android:layout_alignRight="@id/user_password_input"
+        android:layout_below="@+id/user_password_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_bg"
+        android:drawableLeft="@drawable/user_password"
+        android:drawableRight="@drawable/user_delete"
+        android:ems="10"
+        android:hint="再次输入密码"
+        android:inputType="textPassword"
+        android:paddingLeft="4dip"
+        android:paddingRight="4dip"
+        android:singleLine="true" >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="头像:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
+        <requestFocus />
+    </com.haoxue.haoaccount.view.DeletableEditText>
 
-            <View
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@android:color/transparent" />
+    <TextView
+        android:id="@+id/pass2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/user_password_input2"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:padding="8dip"
+        android:text="密码助手"
+        android:textColor="#888888"
+        android:textSize="12sp"
+        android:textStyle="normal" />
 
-            <ImageView
-                android:id="@+id/personal_icon_content"
-                android:layout_width="68.0dip"
-                android:layout_height="match_parent"
-                android:layout_gravity="right|center_vertical"
-                android:contentDescription="@null"
-                android:src="@drawable/bg8" />
-        </LinearLayout>
+    <Button
+        android:id="@+id/personal_commit2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/user_password_input"
+        android:layout_alignRight="@+id/user_password_input"
+        android:layout_below="@+id/pass2"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/selector_logout"
+        android:text="下一步"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="姓名:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
-
-            <EditText
-                android:id="@+id/personal_name"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:minHeight="36dp"
-                android:paddingLeft="4dp"
-                android:singleLine="true"
-                android:textColor="#787876"
-                android:textSize="12.0sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="昵称:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
-
-            <EditText
-                android:id="@+id/personal_nice"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:minHeight="36dp"
-                android:paddingLeft="4dp"
-                android:singleLine="true"
-                android:textColor="#787876"
-                android:textSize="12.0sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="年龄:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
-
-            <TextView
-                android:id="@+id/personal_age"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:minHeight="36dp"
-                android:paddingLeft="4dp"
-                android:singleLine="true"
-                android:textColor="#787876"
-                android:textSize="12.0sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="星座:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
-
-            <TextView
-                android:id="@+id/personal_age2"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:minHeight="36dp"
-                android:paddingLeft="4dp"
-                android:singleLine="true"
-                android:textColor="#787876"
-                android:textSize="12.0sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="性别:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
-
-            <EditText
-                android:id="@+id/personal_sex"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:minHeight="36dp"
-                android:paddingLeft="4dp"
-                android:singleLine="true"
-                android:textColor="#787876"
-                android:textSize="12.0sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="爱好:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
-
-            <EditText
-                android:id="@+id/personal_like"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:minHeight="36dp"
-                android:paddingLeft="4dp"
-                android:singleLine="true"
-                android:textColor="#787876"
-                android:textSize="12.0sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
-                android:paddingRight="8dip"
-                android:text="签名:"
-                android:textColor="#787876"
-                android:textSize="16.0sp" />
-
-            <EditText
-                android:id="@+id/personal_info"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dip"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="center_vertical|right"
-                android:hint="说点什么吧。。。"
-                android:minHeight="36dp"
-                android:paddingLeft="4dp"
-                android:singleLine="true"
-                android:textColor="#787876"
-                android:textSize="12.0sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
-            android:background="#E8E8E8" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48.0dip"
-            android:layout_marginBottom="20sp"
-            android:layout_marginTop="26dp"
-            android:orientation="horizontal" >
-
-            <Button
-                android:id="@+id/personal_commit21"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/selector_logout"
-                android:gravity="center"
-                android:text="跳过"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
-
-            <View
-                android:layout_width="1px"
-                android:layout_height="match_parent"
-                android:background="#ddd" />
-
-            <Button
-                android:id="@+id/personal_commit22"
-                android:layout_width="0sp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/selector_logout"
-                android:gravity="center"
-                android:text="下一步"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>

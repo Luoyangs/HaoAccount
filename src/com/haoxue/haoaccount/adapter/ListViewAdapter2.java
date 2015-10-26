@@ -23,13 +23,13 @@ public class ListViewAdapter2 extends BaseAdapter{
     
     private LayoutInflater inflater;
     private ArrayList<Map<String, String>> list;
-    private FileUtil util;
+    private Context context;
      
     public ListViewAdapter2(Context context, ArrayList<Map<String, String>> list) {
         super();
         this.inflater = LayoutInflater.from(context);
         this.list = list;
-        util = new FileUtil(context);
+        this.context = context;
     }
  
     @Override
@@ -55,7 +55,7 @@ public class ListViewAdapter2 extends BaseAdapter{
         Map<String, String> map = list.get(position);
         ImageView img = (ImageView)convertView.findViewById(R.id.img);
         TextView tv = (TextView)convertView.findViewById(R.id.text);
-        img.setImageDrawable(util.getDrawableByName(map.get("img")));
+        img.setImageDrawable(FileUtil.getDrawableByName(context,map.get("img")));
         tv.setText(map.get("name"));
          
         return convertView;

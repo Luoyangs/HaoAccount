@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.base.AssetDBManager;
-import com.haoxue.haoaccount.base.Constant;
 import com.haoxue.haoaccount.base.SQLiteHelper;
 import com.haoxue.haoaccount.util.FileUtil;
 
@@ -53,8 +52,7 @@ public class TestAct extends Activity {
 	}
 	
 	private void set00(){
-		FileUtil util = new FileUtil(this);
-		imageView.setImageDrawable(util.getDrawableByName("i0"));
+		imageView.setImageDrawable(FileUtil.getDrawableByName(this,"i0"));
 	}
 	
 	private void set0(){

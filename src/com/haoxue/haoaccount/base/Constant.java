@@ -44,10 +44,13 @@ public final class Constant {
 		/**子类别表名*/
 		public static final String CTYPE_TABLE_NAME = "CTYPE_TABLE";
 		
+		/**获取父类别*/
+		public static final String GET_PTYPE_BY_TYPE ="select name,img from PTYPE_TABLE where type=?";
+		/**依据父类别获取子类别*/
+		public static final String GET_CTYPE_BY_PTYPE = "select c.name,c.img from CTYPE_TABLE c,PTYPE_TABLE p where c.type=? and p.id = c.ptype and p.name = ?";
 		
 		/**添加预算*/
-		public static final String INSERT_PREPAY = "insert into PREPAY_TABLE(UserId,num,pay,type,ptype,ctype,froms,use,info,year,month)"
-				+"values(?,?,?,?,?,?,?,?,?,?,?)";
+		public static final String INSERT_PREPAY = "insert into PREPAY_TABLE(UserId,num,pay,type,ptype,ctype,froms,use,info,year,month) values(?,?,?,?,?,?,?,?,?,?,?)";
 		/**判断二级预算是否存在*/
 		public static final String HAS_PREPAY_TWO = "select count(*) from PREPAY_TABLE where type = 3 and ptype = ? and ctype = 0";
 		/**更新二级预算中的预算值*/
@@ -61,6 +64,11 @@ public final class Constant {
 		public static final String SET_PREPAY_THREE_NUM = "update PREPAY_TABLE set num = ? where ctype = ?";
 		/**读取三级预算中的预算和支出*/
 		public static final String GET_PREPAY_THREE = "select num,pay from PREPAY_TABLE where ctype = ?";
+		
+		/**电话判断用户是否存在*/
+		public static final String HAS_USER_PHONE = "select id from USER_TABLE where phone=?";
+		/**邮箱判断用户是否存在*/
+		public static final String HAS_USER_EMAIL = "select id from USER_TABLE where email=?";
 		
 	}
 }

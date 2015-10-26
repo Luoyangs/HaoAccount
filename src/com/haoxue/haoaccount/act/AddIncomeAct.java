@@ -485,7 +485,7 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 	/**获取父类别*/
 	private ArrayList<Map<String, String>> getParentType() {
 		ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        Cursor cursor = database.rawQuery("select name,img from PTYPE_TABLE where type=1", null); 
+        Cursor cursor = database.rawQuery(Constant.DB.GET_PTYPE_BY_TYPE, new String[]{String.valueOf(1)});
         while(cursor.moveToNext()){
         	Map<String, String> map = new HashMap<String, String>();
         	map.put("img", cursor.getString(cursor.getColumnIndex("img")));
@@ -498,7 +498,7 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 	/**依据父类别获取子类别*/
 	private ArrayList<Map<String, String>> getChildType(String ptype){
 		ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        Cursor cursor = database.rawQuery("select c.name,c.img from CTYPE_TABLE c,PTYPE_TABLE p where c.type=1 and p.id = c.ptype and p.name = ?", new String[]{ptype}); 
+        Cursor cursor = database.rawQuery(Constant.DB.GET_CTYPE_BY_PTYPE, new String[]{String.valueOf(1),ptype}); 
         while(cursor.moveToNext()){
         	Map<String, String> map = new HashMap<String, String>();
         	map.put("img", cursor.getString(cursor.getColumnIndex("img")));

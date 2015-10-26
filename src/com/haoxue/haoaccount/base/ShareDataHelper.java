@@ -3,6 +3,7 @@ package com.haoxue.haoaccount.base;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,6 +13,7 @@ import android.content.SharedPreferences.Editor;
  * 作者:Luoyangs
  * 时间:2015-9-25
  */
+@SuppressLint("SimpleDateFormat")
 public final class ShareDataHelper {
 
 	/**程序数据（第一次进入）*/
@@ -107,5 +109,10 @@ public final class ShareDataHelper {
 	/**获取用户信息*/
 	public String getUser(String key){
 		return usershare.getString(key, "");
+	}
+	
+	/**判断是否存在用户登录*/
+	public boolean hasLogin(){
+		return !usershare.getString("userId", "").equals("");
 	}
 }

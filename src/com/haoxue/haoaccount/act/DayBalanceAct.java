@@ -80,12 +80,10 @@ public class DayBalanceAct extends Activity {
 
 		private LayoutInflater inflater;
 	    private ArrayList<Map<String, String>> list;
-	    private FileUtil util;
 		
 		public MyAdapter(Context context,ArrayList<Map<String, String>> list){
 	        this.inflater = LayoutInflater.from(context);
 	        this.list = list;
-	        this.util = new FileUtil(context);
 		}
 		
 		@Override
@@ -123,7 +121,7 @@ public class DayBalanceAct extends Activity {
 	        ImageView img = (ImageView)convertView.findViewById(R.id.img);
 	        TextView name = (TextView)convertView.findViewById(R.id.name);
 	        TextView num = (TextView)convertView.findViewById(R.id.num);
-	        img.setImageDrawable(util.getDrawableByName(map.get("img")));
+	        img.setImageDrawable(FileUtil.getDrawableByName(getBaseContext(),map.get("img")));
 	        name.setText(map.get("name"));
 	        num.setText(""+ new DecimalFormat(".00").format(Float.parseFloat(map.get("num"))));
 	        

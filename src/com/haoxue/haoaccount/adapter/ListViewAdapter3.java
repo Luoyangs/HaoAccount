@@ -25,7 +25,6 @@ public class ListViewAdapter3 extends BaseAdapter{
     
     private LayoutInflater inflater;
     private ArrayList<Map<String, String>> list;
-    private FileUtil util;
     private Context context;
      
     public ListViewAdapter3(Context context, ArrayList<Map<String, String>> list) {
@@ -33,7 +32,6 @@ public class ListViewAdapter3 extends BaseAdapter{
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.list = list;
-        this.util = new FileUtil(context);
     }
  
     @Override
@@ -62,7 +60,7 @@ public class ListViewAdapter3 extends BaseAdapter{
         TextView payout = (TextView)convertView.findViewById(R.id.pay);
         TextView prepay = (TextView)convertView.findViewById(R.id.pre);
         ProgressBar bar = (ProgressBar)convertView.findViewById(R.id.num);
-        img.setImageDrawable(util.getDrawableByName(map.get("img")));
+        img.setImageDrawable(FileUtil.getDrawableByName(context,map.get("img")));
         type.setText(map.get("name"));
         payout.setText("已用 "+ new DecimalFormat("0.00").format(Float.parseFloat(map.get("payout"))));
         prepay.setText("预算 "+ new DecimalFormat("0.00").format(Float.parseFloat(map.get("num"))));

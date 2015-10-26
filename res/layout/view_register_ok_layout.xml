@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15.0dip"
+    android:paddingRight="15.0dip"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40.0dip"
+        android:layout_marginTop="6dp"
+        android:gravity="left|center_vertical"
+        android:text="恭喜您已注册成会员用户~"
+        android:textColor="#888888"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:background="#D95555" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="left|center_vertical"
+        android:text="我们仅为你提示一次您的账户和密码，之后将无法找回，请妥善保管~"
+        android:textColor="#888888"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30.0dip"
+            android:gravity="left|center_vertical"
+            android:text="您的账户为："
+            android:textColor="#888888"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="30.0dip"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="Luoyangs"
+            android:textColor="#ff0000"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="16sp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30.0dip"
+            android:gravity="left|center_vertical"
+            android:text="您的密码为："
+            android:textColor="#888888"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="30.0dip"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="123456"
+            android:textColor="#ff0000"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>
