@@ -32,13 +32,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,8 +72,9 @@ public class RegisterAct extends Activity {
 	private List<View> viewlists;//视图页面集合
 	private View view1,view2,view3;
 	private boolean reg_menu;//false:手机，true：邮箱
-	private String phoneStr,emailStr,passwordStr;
+	private String phoneStr,emailStr,passStr;
 	
+	private long id;//插入的新数据Id
 	private ImageView image;//头像
 	private AlertDialog albumDialog;
 	private String dateTime;
@@ -231,7 +229,7 @@ public class RegisterAct extends Activity {
 					
 					@Override
 					public void onClick(View view) {
-						String passStr = pass.getText().toString().trim();
+						passStr = pass.getText().toString().trim();
 						if (passStr.length() < 6 || pass.length() > 26) {
 							ToastUtil.showShort(RegisterAct.this, "请填写6~25位密码~");
 							return;
@@ -248,7 +246,7 @@ public class RegisterAct extends Activity {
 							ContentValues values = new ContentValues();
 							values.put("phone", phoneStr);
 							values.put("password", passStr);
-							long id = database.insert(Constant.DB.USER_TABLE_NAME, "id", values);
+							id = database.insert(Constant.DB.USER_TABLE_NAME, "id", values);
 							ShareDataHelper.getInstance(RegisterAct.this).saveUser("uerId", String.valueOf(id));
 							ShareDataHelper.getInstance(RegisterAct.this).saveUser("login", phoneStr);
 						}else if(reg_menu){//邮箱
@@ -256,7 +254,7 @@ public class RegisterAct extends Activity {
 							ContentValues values = new ContentValues();
 							values.put("email", emailStr);
 							values.put("password", passStr);
-							long id = database.insert(Constant.DB.USER_TABLE_NAME, "id", values);
+							id = database.insert(Constant.DB.USER_TABLE_NAME, "id", values);
 							ShareDataHelper.getInstance(RegisterAct.this).saveUser("uerId", String.valueOf(id));
 							ShareDataHelper.getInstance(RegisterAct.this).saveUser("login", emailStr);
 						}
@@ -274,13 +272,13 @@ public class RegisterAct extends Activity {
 			}else if(position == 2){
 				//完善信息
 				image = (ImageView) view3.findViewById(R.id.personal_icon_content);
-				EditText name = (EditText) view3.findViewById(R.id.personal_name);
-				EditText nice = (EditText) view3.findViewById(R.id.personal_nice);
-				EditText age = (EditText) view3.findViewById(R.id.personal_age);
-				TextView star = (TextView) view3.findViewById(R.id.personal_star);
-				ToggleButton sex = (ToggleButton) view3.findViewById(R.id.personal_sex);
-				EditText like = (EditText) view3.findViewById(R.id.personal_like);
-				EditText info = (EditText) view3.findViewById(R.id.personal_info);
+				final EditText name = (EditText) view3.findViewById(R.id.personal_name);
+				final EditText nice = (EditText) view3.findViewById(R.id.personal_nice);
+				final EditText age = (EditText) view3.findViewById(R.id.personal_age);
+				final TextView star = (TextView) view3.findViewById(R.id.personal_star);
+				final ToggleButton sex = (ToggleButton) view3.findViewById(R.id.personal_sex);
+				final EditText like = (EditText) view3.findViewById(R.id.personal_like);
+				final EditText info = (EditText) view3.findViewById(R.id.personal_info);
 				//添加监听事件
 				image.setOnClickListener(new OnClickListener() {
 					
@@ -296,6 +294,8 @@ public class RegisterAct extends Activity {
 					@Override
 					public void onClick(View view) {
 						View contentView = inflater.inflate(R.layout.view_register_sky_layout, null);
+						((TextView) contentView.findViewById(R.id.tv_name)).setText(reg_menu?emailStr:phoneStr);
+						((TextView) contentView.findViewById(R.id.tv_pass)).setText(passStr);
 						CuAlertDialog dialog = new CuAlertDialog.Builder(RegisterAct.this)
 								.setContentView(contentView)
 								.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -320,7 +320,37 @@ public class RegisterAct extends Activity {
 					
 					@Override
 					public void onClick(View view) {
+						//验证输入的信息
+						ContentValues values = new ContentValues();
+						if(iconUrl != null && iconUrl.length() > 6){
+							values.put("imageUri", iconUrl.substring(iconUrl.lastIndexOf("/")+1));
+						}
+						if (name.getText().toString().trim().length()>0) {
+							values.put("name", name.getText().toString().trim());
+						}
+						if (nice.getText().toString().trim().length()>0) {
+							values.put("nice", nice.getText().toString().trim());
+						}
+						if (age.getText().toString().trim().length()>0) {
+							values.put("age", Integer.parseInt(age.getText().toString().trim()));
+						}
+						if (star.getText().toString().trim().length()>0) {
+							values.put("star", star.getText().toString().trim());
+						}
+						values.put("sex", sex.isChecked()?"fama":"male");
+						if (like.getText().toString().trim().length()>0) {
+							values.put("like", like.getText().toString().trim());
+						}
+						if (info.getText().toString().trim().length()>0) {
+							values.put("info", info.getText().toString().trim());
+						}
+						if (id >0 && values.size() >0) {
+							database.update(Constant.DB.USER_TABLE_NAME, values, "id", new String[]{String.valueOf(id)});
+						}
 						View contentView = inflater.inflate(R.layout.view_register_ok_layout, null);
+						((TextView) contentView.findViewById(R.id.tv_name)).setText(reg_menu?emailStr:phoneStr);
+						((TextView) contentView.findViewById(R.id.tv_pass)).setText(passStr);
+						
 						CuAlertDialog dialog = new CuAlertDialog.Builder(RegisterAct.this)
 								.setContentView(contentView)
 								.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -432,7 +462,6 @@ public class RegisterAct extends Activity {
 						Bitmap bitmap = extras.getParcelable("data");
 						// 将图片存到SdCard
 						iconUrl = saveToSdCard(bitmap);
-						System.err.println(iconUrl+"      "+files);
 						image.setImageBitmap(bitmap);
 					}
 				}

@@ -401,7 +401,7 @@ int id EditText05 0x7f06002b
 int id EditText06 0x7f06002c
 int id EditText07 0x7f06002d
 int id EditText08 0x7f06002e
-int id action_personal 0x7f0600fb
+int id action_personal 0x7f0600fd
 int id album_pic 0x7f06009a
 int id app 0x7f060054
 int id app_text 0x7f060055
@@ -610,7 +610,9 @@ int id tv_al_title 0x7f06003b
 int id tv_date 0x7f06001c
 int id tv_income 0x7f06009c
 int id tv_info 0x7f06001e
+int id tv_name 0x7f0600fb
 int id tv_outcome 0x7f06009d
+int id tv_pass 0x7f0600fc
 int id tv_src 0x7f060018
 int id tv_to 0x7f06001a
 int id tv_type 0x7f060016

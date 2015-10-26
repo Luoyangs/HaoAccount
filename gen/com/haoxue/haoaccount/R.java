@@ -755,7 +755,7 @@ containing a value of this type.
         public static final int EditText06=0x7f06002c;
         public static final int EditText07=0x7f06002d;
         public static final int EditText08=0x7f06002e;
-        public static final int action_personal=0x7f0600fb;
+        public static final int action_personal=0x7f0600fd;
         public static final int album_pic=0x7f06009a;
         public static final int app=0x7f060054;
         public static final int app_text=0x7f060055;
@@ -964,7 +964,9 @@ containing a value of this type.
         public static final int tv_date=0x7f06001c;
         public static final int tv_income=0x7f06009c;
         public static final int tv_info=0x7f06001e;
+        public static final int tv_name=0x7f0600fb;
         public static final int tv_outcome=0x7f06009d;
+        public static final int tv_pass=0x7f0600fc;
         public static final int tv_src=0x7f060018;
         public static final int tv_to=0x7f06001a;
         public static final int tv_type=0x7f060016;

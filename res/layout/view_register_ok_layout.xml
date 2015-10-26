@@ -44,6 +44,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="0sp"
             android:layout_height="30.0dip"
             android:layout_weight="1"
@@ -69,6 +70,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_pass"
             android:layout_width="0sp"
             android:layout_height="30.0dip"
             android:layout_weight="1"

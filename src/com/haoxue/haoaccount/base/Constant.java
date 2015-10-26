@@ -76,7 +76,7 @@ public final class Constant {
 /**
  * 建表语句
 
-create table USER_TABLE(id integer primary key autoincrement, name varchar(60),password varchar(60),email varchar(30),birth varchar(30), like varchar(260),address varchar(160),work varchar(60),state int);
+CREATE TABLE USER_TABLE(id integer primary key autoincrement,phone varchar(20),email varchar(50),password varchar(50),imageUri varchar(50), name varchar(60),nice varchar(60),age int default 18,star varchar(10), sex varchar(6),likes varchar(160),info text,score int default 0,state int default 0,createTime DATETIME DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime')),updateTime DATETIME);
 
 create table TYPE_TABLE(id integer primary key autoincrement,name varchar(60),state int);
 
