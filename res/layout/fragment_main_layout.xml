@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.handmark.pulltorefresh.PullToRefreshScrollView xmlns:ptr="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:ptr="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/pull_refresh_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-    ptr:ptrAnimationStyle="flip"
-    ptr:ptrMode="both" >
+    android:scrollbars="none" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -383,4 +380,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</com.handmark.pulltorefresh.PullToRefreshScrollView>
+</ScrollView>

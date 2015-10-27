@@ -40,6 +40,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -81,6 +84,7 @@ public class RegisterAct extends Activity {
 	private String iconUrl;
 	
 	private SQLiteDatabase database;
+	private AlertDialog dialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,7 @@ public class RegisterAct extends Activity {
 		
 		ViewUtils.inject(this);
 		//初始化操作
+		reg_menu = false;//false:手机，true：邮箱
 		database = new AssetDBManager().openDatabase(this);
 		tv1.setTextColor(getResources().getColor(R.color.base_green));
 		tv2.setTextColor(getResources().getColor(R.color.base_black_light));
@@ -145,6 +150,7 @@ public class RegisterAct extends Activity {
 				final TextView menu2 = (TextView) view1.findViewById(R.id.reg_menu2);
 				final DeletableEditText phone = (DeletableEditText) view1.findViewById(R.id.user_name_input);
 				final DeletableEditText email = (DeletableEditText) view1.findViewById(R.id.user_email_input);
+				final TextView pass1 = (TextView) view1.findViewById(R.id.pass1);
 				menu1.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -222,9 +228,32 @@ public class RegisterAct extends Activity {
 						vPager.setCurrentItem(position + 1,true);
 					}
 				});
+				pass1.setOnClickListener(new OnClickListener() {
+					
+					@SuppressWarnings("deprecation")
+					@Override
+					public void onClick(View arg0) {
+						dialog = new AlertDialog.Builder(RegisterAct.this).create();
+						dialog.show();
+						dialog.setCanceledOnTouchOutside(false);
+						Window window = dialog.getWindow();
+						LayoutParams p = window.getAttributes();  //获取对话框当前的参数值  
+						p.width = getWindowManager().getDefaultDisplay().getWidth();
+						window.setAttributes(p);     //设置生效  
+						window.setContentView(R.layout.cu_dialog_show_layout);
+						((TextView) window.findViewById(R.id.tv_title)).setText("注册协议"); 
+			            ((WebView) window.findViewById(R.id.wv_content)).loadUrl("file:///android_asset/reg_protocol.html");
+			            ((ImageView) window.findViewById(R.id.tv_close)).setOnClickListener(new View.OnClickListener() {
+							public void onClick(View v) {
+								dialog.cancel();
+							}
+						});
+					}
+				});
 			}else if(position == 1){
 				final DeletableEditText pass = (DeletableEditText) view2.findViewById(R.id.user_password_input);
 				final DeletableEditText pass2 = (DeletableEditText) view2.findViewById(R.id.user_password_input2);
+				final TextView passHelp = (TextView) view2.findViewById(R.id.pass2);
 				((Button) view2.findViewById(R.id.personal_commit2)).setOnClickListener(new OnClickListener() {
 					
 					@Override
@@ -268,7 +297,28 @@ public class RegisterAct extends Activity {
 						vPager.setCurrentItem(position + 1,true);
 					}
 				});
-				
+				passHelp.setOnClickListener(new OnClickListener() {
+					
+					@SuppressWarnings("deprecation")
+					@Override
+					public void onClick(View arg0) {
+						dialog = new AlertDialog.Builder(RegisterAct.this).create();
+						dialog.show();
+						dialog.setCanceledOnTouchOutside(false);
+						Window window = dialog.getWindow();
+						LayoutParams p = window.getAttributes();  //获取对话框当前的参数值  
+						p.width = getWindowManager().getDefaultDisplay().getWidth();
+						window.setAttributes(p);     //设置生效  
+						window.setContentView(R.layout.cu_dialog_show_layout);
+						((TextView) window.findViewById(R.id.tv_title)).setText("密码助手"); 
+			            ((WebView) window.findViewById(R.id.wv_content)).loadUrl("file:///android_asset/pass_help.html");
+			            ((ImageView) window.findViewById(R.id.tv_close)).setOnClickListener(new View.OnClickListener() {
+							public void onClick(View v) {
+								dialog.cancel();
+							}
+						});
+					}
+				});
 			}else if(position == 2){
 				//完善信息
 				image = (ImageView) view3.findViewById(R.id.personal_icon_content);
@@ -293,7 +343,7 @@ public class RegisterAct extends Activity {
 					
 					@Override
 					public void onClick(View view) {
-						View contentView = inflater.inflate(R.layout.view_register_sky_layout, null);
+						View contentView = inflater.inflate(R.layout.cu_dialog_register_sky_layout, null);
 						((TextView) contentView.findViewById(R.id.tv_name)).setText(reg_menu?emailStr:phoneStr);
 						((TextView) contentView.findViewById(R.id.tv_pass)).setText(passStr);
 						CuAlertDialog dialog = new CuAlertDialog.Builder(RegisterAct.this)
@@ -347,7 +397,7 @@ public class RegisterAct extends Activity {
 						if (id >0 && values.size() >0) {
 							database.update(Constant.DB.USER_TABLE_NAME, values, "id=?", new String[]{String.valueOf(id)});
 						}
-						View contentView = inflater.inflate(R.layout.view_register_ok_layout, null);
+						View contentView = inflater.inflate(R.layout.cu_dialog_register_ok_layout, null);
 						((TextView) contentView.findViewById(R.id.tv_name)).setText(reg_menu?emailStr:phoneStr);
 						((TextView) contentView.findViewById(R.id.tv_pass)).setText(passStr);
 						
@@ -378,7 +428,7 @@ public class RegisterAct extends Activity {
 		private void showAlbumDialog(){
 			albumDialog = new AlertDialog.Builder(RegisterAct.this).create();
 			albumDialog.setCanceledOnTouchOutside(false);
-			View v = LayoutInflater.from(RegisterAct.this).inflate(R.layout.dialog_chose_image_layout, null);
+			View v = LayoutInflater.from(RegisterAct.this).inflate(R.layout.cu_dialog_choseimage_layout, null);
 			albumDialog.show();
 			albumDialog.setContentView(v);
 			albumDialog.getWindow().setGravity(Gravity.CENTER);
