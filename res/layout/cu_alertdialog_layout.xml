@@ -23,11 +23,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="top|left"
-        android:minHeight="100dip"
+        android:minHeight="110dip"
         android:background="#fff"
-        android:orientation="vertical"
-        android:paddingLeft="15sp"
-        android:paddingTop="18sp" >
+        android:orientation="vertical" >
     </LinearLayout>
 
     <LinearLayout
@@ -40,7 +38,7 @@
             android:layout_width="0sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/selector_logout"
+            android:background="@drawable/selector_cancel"
             android:gravity="center"
             android:text="取  消"
             android:textColor="#fff"

@@ -69,7 +69,10 @@ public final class Constant {
 		public static final String HAS_USER_PHONE = "select id from USER_TABLE where phone=?";
 		/**邮箱判断用户是否存在*/
 		public static final String HAS_USER_EMAIL = "select id from USER_TABLE where email=?";
-		
+		/**手机登陆*/
+		public static final String LOG_USER_PHONE = "select id from USER_TABLE where phone=? and password=?";
+		/**邮箱登陆*/
+		public static final String LOG_USER_EMAIL = "select id from USER_TABLE where email=? and password=?";
 	}
 }
 

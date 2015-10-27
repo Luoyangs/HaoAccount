@@ -276,7 +276,7 @@ public class RegisterAct extends Activity {
 							values.put("phone", phoneStr);
 							values.put("password", passStr);
 							id = database.insert(Constant.DB.USER_TABLE_NAME, "id", values);
-							ShareDataHelper.getInstance(RegisterAct.this).saveUser("uerId", String.valueOf(id));
+							ShareDataHelper.getInstance(RegisterAct.this).saveUser("userId", String.valueOf(id));
 							ShareDataHelper.getInstance(RegisterAct.this).saveUser("login", phoneStr);
 						}else if(reg_menu){//邮箱
 							//邮箱注册
@@ -284,7 +284,7 @@ public class RegisterAct extends Activity {
 							values.put("email", emailStr);
 							values.put("password", passStr);
 							id = database.insert(Constant.DB.USER_TABLE_NAME, "id", values);
-							ShareDataHelper.getInstance(RegisterAct.this).saveUser("uerId", String.valueOf(id));
+							ShareDataHelper.getInstance(RegisterAct.this).saveUser("userId", String.valueOf(id));
 							ShareDataHelper.getInstance(RegisterAct.this).saveUser("login", emailStr);
 						}
 						//导航变化

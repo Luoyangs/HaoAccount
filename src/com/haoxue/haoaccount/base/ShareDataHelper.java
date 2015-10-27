@@ -3,6 +3,8 @@ package com.haoxue.haoaccount.base;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.haoxue.haoaccount.R;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -49,6 +51,18 @@ public final class ShareDataHelper {
 	/**获取登录信息（是否第一次初始化程序,默认为true）*/
 	public boolean getLoadingInfo(){
 		return appshare.getBoolean(Constant.IS_FIRST_LOGIN, true);
+	}
+	
+	/**保存背景图片*/
+	public void saveBgImage(int imgId){
+		Editor editor = appshare.edit();
+		editor.putInt("imgId", imgId);
+		editor.commit();
+	}
+	
+	/**获取背景图片*/
+	public int getBgImage(){
+		return appshare.getInt("imgId", R.drawable.bg1);
 	}
 	
 	/**保存登录密码信息*/

@@ -14,4 +14,18 @@
     <string name="blue">借贷</string>
     <string name="indigo">其它...</string>
 
+    <!-- 背景图片集合 -->
+    <string-array name="bg_images">
+        <item>@drawable/bg1</item>
+        <item>@drawable/bg2</item>
+        <item>@drawable/bg3</item>
+        <item>@drawable/bg4</item>
+        <item>@drawable/bg5</item>
+        <item>@drawable/bg6</item>
+        <item>@drawable/bg7</item>
+        <item>@drawable/bg8</item>
+        <item>@drawable/bg9</item>
+        <item>@drawable/bg10</item>
+        <item>@drawable/bg11</item>
+    </string-array>
 </resources>

@@ -1,7 +1,9 @@
 package com.haoxue.haoaccount.act;
 
 import com.haoxue.haoaccount.act.frag.MainFragment;
+import com.haoxue.haoaccount.base.ActivityManager;
 import com.haoxue.haoaccount.base.ShareDataHelper;
+import com.haoxue.haoaccount.view.CuAlertDialog;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuDrawable;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuDrawable.Stroke;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuIcon;
@@ -12,6 +14,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import com.haoxue.haoaccount.R;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -60,7 +63,7 @@ public class MainAct extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ViewUtils.inject(this);
-		
+		ActivityManager.getInstance().addActivity(this);
 		initView(savedInstanceState);
 	}
 	
@@ -87,6 +90,34 @@ public class MainAct extends FragmentActivity {
 	public void onSetOnclick(View view){
 		closeLeftMenu();
 		startActivity(new Intent(this,SetAct.class));
+	}
+	
+	@OnClick(R.id.pifu)
+	public void setSkin(View view) {
+		closeLeftMenu();
+		startActivity(new Intent(MainAct.this, SetSkinAct.class));
+	}
+	
+	@OnClick(R.id.exit)
+	public void setExit(View view) {
+		closeLeftMenu();
+		View contentView = getLayoutInflater().inflate(R.layout.cu_dialog_exitapp_layout, null);
+		CuAlertDialog dialog = new CuAlertDialog.Builder(MainAct.this)
+		.setContentView(contentView)
+		.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss(); 
+				startActivity(new Intent(MainAct.this,ExitAppAct.class));
+			}
+		})
+		.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		})
+		.create();
+dialog.show();
+dialog.setCanceledOnTouchOutside(false);
 	}
 	
 	@OnClick(R.id.userImg)

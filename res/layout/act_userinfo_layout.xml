@@ -170,7 +170,7 @@
                     android:layout_marginTop="13dp"
                     android:singleLine="true"
                     android:ellipsize="end"
-                    android:text="TA推荐的好书"
+                    android:text="TA正在使用的账本"
                     android:textSize="12sp"
                     android:textColor="#A1A1A1" />
 
