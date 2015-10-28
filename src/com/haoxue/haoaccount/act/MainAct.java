@@ -122,8 +122,8 @@ public class MainAct extends FragmentActivity {
 			}
 		})
 		.create();
-dialog.show();
-dialog.setCanceledOnTouchOutside(false);
+		dialog.show();
+		dialog.setCanceledOnTouchOutside(false);
 	}
 	
 	@OnClick(R.id.userImg)
