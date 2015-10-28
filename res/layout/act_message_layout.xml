@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@color/base_green"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/titilbar_left"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:background="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/titilbar_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="查看消息"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/titilbar_right"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#455A64"
+        android:gravity="center"
+        android:minHeight="80dp" >
+
+        <com.haoxue.haoaccount.view.SegmentControl
+            android:id="@+id/segment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            segmentedgroup:sc_border_width="1dp"
+            segmentedgroup:sc_corner_radius="5dp"
+            segmentedgroup:sc_tint_color="#009688" >
+
+            <RadioButton
+                android:id="@+id/segmentSys"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="系统消息" />
+
+            <RadioButton
+                android:id="@+id/segmentUser"
+                style="@style/RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户消息" />
+        </com.haoxue.haoaccount.view.SegmentControl>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1" />
+
+</LinearLayout>

@@ -15,4 +15,8 @@
     <dimen name="progress_width">250dp</dimen>
     
     <dimen name="textSizeMedium">13sp</dimen>
+    
+    <!-- SegmentControl -->
+    <dimen name="radio_button_conner_radius">5dp</dimen>
+    <dimen name="radio_button_stroke_border">1dp</dimen>
 </resources>

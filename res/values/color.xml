@@ -45,4 +45,8 @@
     
     <color name="com_bg_dark_color">#404040</color>
     
+    <!-- SegmentControl -->
+    <color name="radio_button_selected_color">#ff33b5e5</color>
+    <color name="radio_button_unselected_color">@android:color/transparent</color>
+    
 </resources>

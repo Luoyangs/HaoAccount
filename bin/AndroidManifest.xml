@@ -39,6 +39,7 @@
         <activity android:name="com.haoxue.haoaccount.act.PrepayLayerAct" />
         <activity android:name="com.haoxue.haoaccount.act.DayBalanceAct" />
         <activity android:name="com.haoxue.haoaccount.act.SetAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.MessageAct"/>
         <activity android:name="com.haoxue.haoaccount.act.SetSkinAct"/>
         <activity android:name="com.haoxue.haoaccount.act.ShowImageAct"
             android:theme="@android:style/Theme.Black.NoTitleBar"/>

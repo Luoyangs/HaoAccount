@@ -98,6 +98,12 @@ public class MainAct extends FragmentActivity {
 		startActivity(new Intent(MainAct.this, SetSkinAct.class));
 	}
 	
+	@OnClick(R.id.tongzhi)
+	public void setMessage(View view) {
+		closeLeftMenu();
+		startActivity(new Intent(MainAct.this, MessageAct.class));
+	}
+	
 	@OnClick(R.id.exit)
 	public void setExit(View view) {
 		closeLeftMenu();
