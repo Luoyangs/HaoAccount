@@ -63,7 +63,7 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 	@ViewInject(R.id.tv_src)
 	private TextView tvSrc;
 	@ViewInject(R.id.tv_to)
-	private TextView tvTo;
+	private TextView tvUse;
 	@ViewInject(R.id.tv_date)
 	private TextView tvDate;
 	@ViewInject(R.id.etinfo)
@@ -86,7 +86,6 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 	private SQLiteDatabase database;
 	private String ptype = "";
 	private String ctype = "";
-	private String outSrc = "";
 	
 	@SuppressLint("SimpleDateFormat")
 	@Override
@@ -104,7 +103,7 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 			tvDate.setOnClickListener(this);
 			tvType.setOnClickListener(this);
 			tvSrc.setOnClickListener(this);
-			tvTo.setOnClickListener(this);
+			tvUse.setOnClickListener(this);
 		}else if (isEdit == 1) {
 			titilbar.setText("查看支出");
 		}else{
@@ -126,7 +125,7 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 	public void onSave(View view){
 		//核查输入
 		if (etNum.getText() == null || etNum.getText().length() == 0) {
-			ToastUtil.showShort(this, "还没填写收入...");
+			ToastUtil.showShort(this, "还没填写支出...");
 			return;
 		}
 		if (tvType.getText() == null || tvType.getText().length() == 0) {
@@ -137,12 +136,12 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 			ToastUtil.showShort(this, "请选择来源...");
 			return;
 		}
-		if (tvTo.getText() == null || tvTo.getText().length() == 0) {
-			ToastUtil.showShort(this, "请选择存储...");
+		if (tvUse.getText() == null || tvUse.getText().length() == 0) {
+			ToastUtil.showShort(this, "请选择用途...");
 			return;
 		}
 		String info = "金额：" + etNum.getText().toString() + "\n类别：" + tvType.getText().toString();
-		info += "\n来源：" + tvSrc.getText().toString()+ "\n存储：" + tvTo.getText().toString();
+		info += "\n来源：" + tvSrc.getText().toString()+ "\n用途：" + tvUse.getText().toString();
 		info += "\n日期：" + tvDate.getText().toString()+ "\n备注：" + tvInfo.getText().toString();
 		final SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
 		pDialog.setTitleText("请确认信息···");
@@ -203,14 +202,14 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 				ContentValues values = new ContentValues();  
 				values.put("userId", userId);  
 				values.put("num", Float.parseFloat(etNum.getText().toString()));  
-				values.put("type", 1);  
+				values.put("type", 2);  
 				values.put("ptype", ptypeId);  
 				values.put("ctype", ctypeId);  
 				values.put("froms", tvSrc.getText().toString());  
-				values.put("save", tvTo.getText().toString());  
+				values.put("use", tvUse.getText().toString());  
 				values.put("info", tvInfo.getText().toString()); 
-				values.put("info", tvDate.getText().toString()); 
-				long result = database.insert(Constant.DB.INCOME_TABLE_NAME, "id", values);
+				values.put("date", tvDate.getText().toString()); 
+				long result = database.insert(Constant.DB.OUTCOME_TABLE_NAME, "id", values);
 				if (result > 0) {
 					finish = true;
 				}
@@ -270,7 +269,7 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                tvTo.setText(list.get(position));
+            	tvUse.setText(list.get(position));
                 pw.dismiss();
             }
         });
@@ -295,7 +294,6 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                outSrc = list.get(position);
             	tvSrc.setText(list.get(position));
                 pw.dismiss();
             }
@@ -487,7 +485,7 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 	/**获取父类别*/
 	private ArrayList<Map<String, String>> getParentType() {
 		ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        Cursor cursor = database.rawQuery("select name,img from PTYPE_TABLE where type=1", null); 
+        Cursor cursor = database.rawQuery("select name,img from PTYPE_TABLE where type=2", null); 
         while(cursor.moveToNext()){
         	Map<String, String> map = new HashMap<String, String>();
         	map.put("img", cursor.getString(cursor.getColumnIndex("img")));
@@ -500,7 +498,7 @@ public class AddOutcomeAct extends FragmentActivity implements OnClickListener{
 	/**依据父类别获取子类别*/
 	private ArrayList<Map<String, String>> getChildType(String ptype){
 		ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        Cursor cursor = database.rawQuery("select c.name,c.img from CTYPE_TABLE c,PTYPE_TABLE p where c.type=1 and p.id = c.ptype and p.name = ?", new String[]{ptype}); 
+        Cursor cursor = database.rawQuery("select c.name,c.img from CTYPE_TABLE c,PTYPE_TABLE p where c.type=2 and p.id = c.ptype and p.name = ?", new String[]{ptype}); 
         while(cursor.moveToNext()){
         	Map<String, String> map = new HashMap<String, String>();
         	map.put("img", cursor.getString(cursor.getColumnIndex("img")));

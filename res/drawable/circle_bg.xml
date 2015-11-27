@@ -4,12 +4,12 @@
 
     <!-- 填充的颜色 -->
 
-    <solid android:color="#80000000" />
+    <solid android:color="#5FA918" />
 
     <!-- 设置按钮的四个角为弧形 -->
 
 
     <!-- android:radius 弧形的半径 -->
-    <corners android:radius="10sp" />
+    <corners android:radius="6sp" />
 
 </shape>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@color/base_green"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/titilbar_left"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:background="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/titilbar_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="更多选择"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/titilbar_right"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#fff"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <com.haoxue.haoaccount.view.CuHorizontalScrollView
+        android:id="@+id/myscroll"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:background="#8B5A05"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:id="@+id/middle_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" />
+    </com.haoxue.haoaccount.view.CuHorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:background="#AF8936"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="8dp"
+            android:text="私人定制"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/per_add"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/add"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ff715A17"
+        android:divider="#bbb"
+        android:dividerHeight="0.05dp" />
+
+</LinearLayout>

@@ -8,15 +8,36 @@
         android:minSdkVersion="19"
         android:targetSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+	<!-- 在SDCard中创建与删除文件权限 -->  
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>  
+    <!-- 申请使用摄像头的权限 -->  
+    <uses-permission android:name="android.permission.CAMERA"/>  
+    <!-- 申请录音权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
     <application
+        android:name="com.haoxue.haoaccount.base.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
-        android:theme="@android:style/Theme.Light.NoTitleBar" >
+        android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
         <activity
             android:name="com.haoxue.haoaccount.LauncherAct"
             android:label="@string/app_name" >
@@ -35,11 +56,24 @@
             android:configChanges="keyboardHidden" />
         <activity android:name="com.haoxue.haoaccount.act.AddIncomeAct" />
         <activity android:name="com.haoxue.haoaccount.act.AddOutcomeAct" />
+        <activity android:name="com.haoxue.haoaccount.act.AddTransferAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayLayerAct" />
         <activity android:name="com.haoxue.haoaccount.act.DayBalanceAct" />
+        <activity android:name="com.haoxue.haoaccount.act.EditPropertyAct" />
+        <activity android:name="com.haoxue.haoaccount.act.MoreTypeAct" />
         <activity android:name="com.haoxue.haoaccount.act.SetAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.SignAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.NoteListAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.NoteMgrAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.AddNoteAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.AddNoteTypeAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.AlbumAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.AddRecordAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.PlayVedioAct"
+            android:screenOrientation="landscape"/>
         <activity android:name="com.haoxue.haoaccount.act.MessageAct"/>
+        <activity android:name="com.haoxue.haoaccount.act.MessageDetailAct"/>
         <activity android:name="com.haoxue.haoaccount.act.SetSkinAct"/>
         <activity android:name="com.haoxue.haoaccount.act.ShowImageAct"
             android:theme="@android:style/Theme.Black.NoTitleBar"/>
@@ -48,6 +82,14 @@
         <activity android:name="com.haoxue.haoaccount.act.RegisterAct"/>
         <activity android:name="com.haoxue.haoaccount.act.UserInfoAct"/>
         <activity android:name="com.haoxue.haoaccount.act.TestAct" />
+        
+        <!-- 声明service组件,每个app拥有自己单独的定位service -->
+        <service android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+        </service>
+        <meta-data android:name="com.baidu.lbsapi.API_KEY"
+            android:value="bSnOClgxVTINiCUL4khLg9qS"/>
     </application>
 
 </manifest>

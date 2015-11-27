@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="60dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/circle_bg_gray_nobottom"
+            android:drawableLeft="@drawable/edit"
+            android:gravity="center"
+            android:text="编辑"
+            android:textColor="#fff"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="40dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/circle_bg_gray_nobottom"
+            android:gravity="center"
+            android:text="OK"
+            android:textColor="#fff"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="#444"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingTop="6dp" >
+
+            <com.haoxue.haoaccount.view.WheelView
+                android:id="@+id/main_wheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingTop="6dp" >
+
+            <com.haoxue.haoaccount.view.WheelView
+                android:id="@+id/sub_wheel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_gravity="center"
+        android:background="#000"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/btnok"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/select_bg2"
+            android:gravity="center"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            android:text="确  定"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</LinearLayout>

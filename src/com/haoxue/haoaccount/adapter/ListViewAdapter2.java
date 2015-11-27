@@ -7,6 +7,7 @@ import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.util.FileUtil;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class ListViewAdapter2 extends BaseAdapter{
     private LayoutInflater inflater;
     private ArrayList<Map<String, String>> list;
     private Context context;
+    private int selectIndex = -1;
      
     public ListViewAdapter2(Context context, ArrayList<Map<String, String>> list) {
         super();
@@ -44,8 +46,12 @@ public class ListViewAdapter2 extends BaseAdapter{
  
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
+    
+    public void setSelectIndex(int selectIndex) {
+		this.selectIndex = selectIndex;
+	}
  
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -57,7 +63,11 @@ public class ListViewAdapter2 extends BaseAdapter{
         TextView tv = (TextView)convertView.findViewById(R.id.text);
         img.setImageDrawable(FileUtil.getDrawableByName(context,map.get("img")));
         tv.setText(map.get("name"));
-         
+        if (position == selectIndex) {
+        	tv.setTextColor(Color.parseColor("#E07E05"));
+		}else{
+			tv.setTextColor(Color.parseColor("#aaaaaa"));
+		}
         return convertView;
     }
  

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/h_broker_card_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/pop21"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:background="@drawable/listview_item_bg_noborder"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="添加图片"
+        android:textColor="#333333"
+        android:textSize="14dip" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.0005dip"
+        android:background="#cccccc" />
+
+    <TextView
+        android:id="@+id/pop22"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:background="@drawable/listview_item_bg_noborder"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="录制音频"
+        android:textColor="#333333"
+        android:textSize="14dip" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.0005dip"
+        android:background="#cccccc" />
+
+    <TextView
+        android:id="@+id/pop23"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:background="@drawable/listview_item_bg_noborder"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="录制视频"
+        android:textColor="#333333"
+        android:textSize="14dip" />
+
+</LinearLayout>

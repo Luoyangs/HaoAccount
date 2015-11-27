@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/btn_mp"
+        style="@style/menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/select_bg3"
+        android:drawableLeft="@drawable/shiyong"
+        android:drawablePadding="8dp"
+        android:paddingLeft="15sp"
+        android:text="管理分类" />
+
+    <TextView
+        android:id="@+id/btn_ap"
+        style="@style/menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/select_bg3"
+        android:drawableLeft="@drawable/fankui"
+        android:drawablePadding="8dp"
+        android:paddingLeft="15sp"
+        android:text="添加分类" />
+
+    <TextView
+        android:id="@+id/btn_an"
+        style="@style/menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/select_bg3"
+        android:drawableLeft="@drawable/fankui"
+        android:drawablePadding="8dp"
+        android:paddingLeft="15sp"
+        android:text="添加记事" />
+
+</LinearLayout>

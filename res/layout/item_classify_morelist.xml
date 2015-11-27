@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:orientation="vertical"
+    android:paddingLeft="10dp" >
+
+    <LinearLayout
+        android:id="@+id/moreitem_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#ffffffff"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/moreitem_txt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="新东方的快乐可登录沙发就困了睡觉想得开V型马卡龙"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/moreitem_time"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:text="2012-12-12"
+            android:layout_marginRight="6dp"
+            android:gravity="right"
+            android:textColor="#aaa"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+</LinearLayout>

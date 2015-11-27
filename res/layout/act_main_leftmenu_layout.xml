@@ -120,7 +120,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/app"
+                android:id="@+id/sign"
                 android:layout_width="fill_parent"
                 android:layout_height="50sp"
                 android:layout_gravity="center_vertical"
@@ -131,14 +131,14 @@
                 android:paddingRight="10sp" >
 
                 <TextView
-                    android:id="@+id/app_text"
+                    android:id="@+id/sign_text"
                     android:layout_width="0sp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:drawableLeft="@drawable/app"
                     android:drawablePadding="6sp"
                     android:gravity="center_vertical"
-                    android:text="应用 每天都有好应用..."
+                    android:text="签到 每天都有惊喜哦..."
                     android:textColor="@color/base_dark" />
 
                 <ImageView
@@ -164,7 +164,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/gv_tianqi"
+                android:id="@+id/gv_note"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -172,14 +172,14 @@
                  android:drawablePadding="16sp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15sp"
-                android:text="天气预报"
+                android:text="记事便签"
                 android:clickable="true"
                 android:background="@drawable/select_bg"
                 android:textColor="@color/base_dark"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/gv_jiankang"
+                android:id="@+id/gv_liushui"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -187,14 +187,14 @@
                 android:drawablePadding="16sp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15sp"
-                android:text="健康资讯"
+                android:text="流水账簿"
                 android:clickable="true"
                 android:background="@drawable/select_bg"
                 android:textColor="@color/base_dark"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/gv_jingdian"
+                android:id="@+id/gv_magr"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -202,14 +202,14 @@
                 android:drawablePadding="16sp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15sp"
-                android:text="景点查询"
+                android:text="账户管理"
                 android:clickable="true"
                 android:background="@drawable/select_bg"
                 android:textColor="@color/base_dark"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/gv_kuaile"
+                android:id="@+id/gv_async"
                 android:layout_width="fill_parent"
                 android:layout_height="50dip"
                 android:layout_weight="1"
@@ -217,7 +217,7 @@
                 android:drawablePadding="16sp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15sp"
-                android:text="每日一乐"
+                android:text="同步数据"
                 android:clickable="true"
                 android:background="@drawable/select_bg"
                 android:textColor="@color/base_dark"

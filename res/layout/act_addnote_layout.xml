@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_alignParentTop="true"
+        android:background="@color/base_green"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/titilbar_left"
+            android:layout_width="40sp"
+            android:layout_height="50sp"
+            android:background="@drawable/btn_back"
+            android:paddingRight="10sp" />
+
+        <TextView
+            android:id="@+id/titilbar_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:text="每日记事"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/titilbar_right"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:text="确定"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/sv_content"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top"
+        android:layout_gravity="left|top"
+        android:background="@drawable/edit_white"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:orientation="vertical" >
+
+            <com.haoxue.haoaccount.view.DeletableEditText
+                android:id="@+id/txttitle"
+                android:layout_width="match_parent"
+                android:layout_height="48dip"
+                android:layout_marginLeft="-6dp"
+                android:layout_marginRight="-6dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_bg"
+                android:drawableRight="@drawable/user_delete"
+                android:ems="8"
+                android:hint="请输入标题"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textSize="14dp" />
+
+            <com.haoxue.haoaccount.view.NoteEditText
+                android:id="@+id/note_edit_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txttitle"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:autoLink="all"
+                android:background="@null"
+                android:gravity="left|top"
+                android:hint="记点什么吧~"
+                android:lineSpacingMultiplier="1.2"
+                android:linksClickable="false"
+                android:minHeight="400dp"
+                android:minLines="12"
+                android:textColor="#666" />
+
+            <TextView
+                android:id="@+id/more_text"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/note_edit_view"
+                android:background="#eee"
+                android:drawableLeft="@drawable/morefj"
+                android:gravity="center_vertical|left"
+                android:text="附件"
+                android:textColor="#aaa"
+                android:textSize="14dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/piclay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/more_text"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <com.haoxue.haoaccount.view.CuGridView
+                    android:id="@+id/pics"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EFDFDF"
+                    android:columnWidth="90dp"
+                    android:gravity="center"
+                    android:horizontalSpacing="5dp"
+                    android:numColumns="4"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="5dp" />
+
+                <TextView
+                    android:id="@+id/pics_tip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="(友情提示:只能添加8张图片,长按图片可以删除已添加图片)"
+                    android:textColor="#ccc"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <com.haoxue.haoaccount.view.CuListView
+                android:id="@+id/yinlist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/piclay"
+                android:divider="#ddd"
+                android:dividerHeight="0.005dip"
+                android:scrollbars="@null"
+                android:visibility="gone" />
+
+            <View
+                android:id="@+id/v1"
+                android:layout_width="fill_parent"
+                android:layout_height="0.005dip"
+                android:layout_below="@+id/yinlist"
+                android:background="#ddd"
+                android:visibility="gone" />
+
+            <com.haoxue.haoaccount.view.CuListView
+                android:id="@+id/vediolist"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/v1"
+                android:divider="#ddd"
+                android:dividerHeight="0.005dip"
+                android:scrollbars="@null"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/layout_customemenu"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/savemenu"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/listview_item_bg_noborder"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/ep_tab_his_normal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/listview_item_bg_noborder"
+                    android:gravity="center"
+                    android:text="存储账户"
+                    android:textColor="#aaa"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_up_black" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.05dip"
+                android:layout_height="fill_parent"
+                android:background="#cccccc" />
+
+            <LinearLayout
+                android:id="@+id/bgmenu"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/listview_item_bg_noborder"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/listview_item_bg_noborder"
+                    android:gravity="center"
+                    android:text="选择背景"
+                    android:textColor="#aaa"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_up_black" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.05dip"
+                android:layout_height="fill_parent"
+                android:background="#cccccc" />
+
+            <LinearLayout
+                android:id="@+id/typemenu"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/listview_item_bg_noborder"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/listview_item_bg_noborder"
+                    android:gravity="center"
+                    android:text="选择类别"
+                    android:textColor="#aaa"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_up_black" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.05dip"
+                android:layout_height="fill_parent"
+                android:background="#cccccc" />
+
+            <LinearLayout
+                android:id="@+id/moremenu"
+                android:layout_width="0sp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/listview_item_bg_noborder"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/listview_item_bg_noborder"
+                    android:gravity="center"
+                    android:text="插入附件"
+                    android:textColor="#aaa"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_up_black" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

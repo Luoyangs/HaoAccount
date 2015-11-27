@@ -1,0 +1,77 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@color/base_green"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/titilbar_left"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_back" />
+
+        <TextView
+            android:id="@+id/titilbar_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:text="文笔记事"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/titilbar_right"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:src="@drawable/btn_more" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:background="#FFEBEBEB"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/classify_mainlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000"
+                android:divider="#fff"
+                android:dividerHeight="1px"
+                android:fastScrollEnabled="true"
+                android:listSelector="#00000000"
+                android:scrollbars="@null" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/classify_morelist"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:cacheColorHint="#00000000"
+            android:divider="#ffebebeb"
+            android:dividerHeight="0.5px"
+            android:fastScrollEnabled="true"
+            android:listSelector="#00000000"
+            android:scrollbars="@null" />
+    </LinearLayout>
+
+</LinearLayout>

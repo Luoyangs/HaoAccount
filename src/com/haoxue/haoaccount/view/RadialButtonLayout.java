@@ -3,6 +3,7 @@ package com.haoxue.haoaccount.view;
 import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.act.AddIncomeAct;
 import com.haoxue.haoaccount.act.AddOutcomeAct;
+import com.haoxue.haoaccount.act.MoreTypeAct;
 import com.haoxue.haoaccount.act.PrepayAct;
 import com.haoxue.haoaccount.act.TestAct;
 import com.lidroid.xutils.ViewUtils;
@@ -63,6 +64,12 @@ public class RadialButtonLayout extends FrameLayout {
             //
         } else{
             ViewUtils.inject(this);
+            /*show(btnOrange, 1, 300);
+            show(btnYellow, 2, 300);
+            show(btnGreen, 3, 300);
+            show(btnBlue, 4, 300);
+            show(btnIndigo, 5, 300);
+            isOpen = true;*/
         }
     }
 
@@ -119,6 +126,7 @@ public class RadialButtonLayout extends FrameLayout {
             	context.startActivity(new Intent(getContext(),TestAct.class));
                 break;
             case R.id.btn_indigo:
+            	context.startActivity(new Intent(getContext(),MoreTypeAct.class));
                 break;
             default:
             	break;

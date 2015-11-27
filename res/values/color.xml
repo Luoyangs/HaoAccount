@@ -44,9 +44,16 @@
     <color name="bbutton_info_disabled_edge">#a546b8da</color>
     
     <color name="com_bg_dark_color">#404040</color>
+    <color name="none_color">#00000000</color>
     
     <!-- SegmentControl -->
     <color name="radio_button_selected_color">#ff33b5e5</color>
     <color name="radio_button_unselected_color">@android:color/transparent</color>
     
+    <!-- 半透明灰色 -->
+    <color name="gray_50">#50949494</color>
+    <!-- 半透明浅灰色 -->
+    <color name="lightgray_50">#50cdd0d7</color>
+    <color name="light_green">#58DB6F</color>
+    <color name="transgray">#33555555</color>
 </resources>

@@ -3,11 +3,14 @@ package com.haoxue.haoaccount.util;
 import static android.os.Environment.MEDIA_MOUNTED;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.util.Log;
@@ -86,4 +89,36 @@ public class FileUtil {
         int perm = context.checkCallingOrSelfPermission(EXTERNAL_STORAGE_PERMISSION);
         return perm == PackageManager.PERMISSION_GRANTED;
     }
+    
+    public static boolean isFileExist(String fileName) {
+		File file = new File(SDPATH + fileName);
+		file.isFile();
+		return file.exists();
+	}
+    
+    public static File createSDDir(String dirName) throws IOException {
+		File dir = new File(SDPATH + dirName);
+		return dir;
+	}
+    
+    public static String SDPATH = Environment.getExternalStorageDirectory() + "/Photo_NB/";
+    public static void saveBitmap(Bitmap bm, String picName) {
+		try {
+			if (!isFileExist("")) {
+				File tempf = createSDDir("");
+			}
+			File f = new File(SDPATH, picName + ".JPEG"); 
+			if (f.exists()) {
+				f.delete();
+			}
+			FileOutputStream out = new FileOutputStream(f);
+			bm.compress(Bitmap.CompressFormat.JPEG, 90, out);
+			out.flush();
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

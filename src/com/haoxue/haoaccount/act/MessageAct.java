@@ -6,17 +6,22 @@ import java.util.List;
 
 import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.act.frag.MessageFragment;
+import com.haoxue.haoaccount.base.AssetDBManager;
+import com.haoxue.haoaccount.base.Constant;
 import com.haoxue.haoaccount.view.SegmentControl;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -32,16 +37,22 @@ public class MessageAct extends FragmentActivity implements OnCheckedChangeListe
 	private SegmentControl segment;
 	@ViewInject(R.id.content_frame)
 	private FrameLayout content_frame;
+	@ViewInject(R.id.segmentSys)
+	private RadioButton segmentSys;
 	private Fragment curFragment;// 当前面板
 	private Fragment sysfragment,userfragment;
+	private SQLiteDatabase database;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		ViewUtils.inject(this);
+		database = new AssetDBManager().openDatabase(this);
 		segment.setOnCheckedChangeListener(this);
 		if (savedInstanceState == null) {
+			sysfragment = new MessageFragment(getLists(0));
+			userfragment = new MessageFragment(getLists(1));
 			switchToTargetFragment(sysfragment);
 		}
 	}
@@ -49,27 +60,25 @@ public class MessageAct extends FragmentActivity implements OnCheckedChangeListe
 	@Override
 	protected void onResume() {
 		super.onResume();
-		sysfragment = new MessageFragment(getSysLists());
-		userfragment = new MessageFragment(getUserLists());
+		((MessageFragment) sysfragment).setList(getLists(0));
+		((MessageFragment) userfragment).setList(getLists(1));
 	}
 	
-	private List<HashMap<String, String>> getSysLists(){
+	private List<HashMap<String, String>> getLists(int typeId){
 		List<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
-		for (int i = 0; i < 15; i++) {
-			HashMap<String,String> map = new HashMap<String, String>();
-			map.put("title", "这是系统消息第"+i+"个标题");
-			list.add(map);
-		}
-		return list;
-	}
-	
-	private List<HashMap<String, String>> getUserLists(){
-		List<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
-		for (int i = 0; i < 15; i++) {
-			HashMap<String,String> map = new HashMap<String, String>();
-			map.put("title", "这是用户消息第"+i+"个标题");
-			list.add(map);
-		}
+		Cursor cursor = database.rawQuery(Constant.DB.HAS_MSG_BY_TYPE, new String[]{String.valueOf(typeId)}); 
+    	if (cursor.moveToFirst() && cursor.getInt(0) == 0) {
+    		list = null;
+    	}else{
+    		Cursor cursor2 = database.rawQuery(Constant.DB.GET_MSG_BY_TYPE, new String[]{String.valueOf(typeId)});
+    		while(cursor2.moveToNext()){
+    			HashMap<String,String> map = new HashMap<String, String>();
+    			map.put("id", ""+cursor2.getInt(cursor2.getColumnIndex("id")));
+    			map.put("title", cursor2.getString(cursor2.getColumnIndex("title")));
+    			map.put("state", ""+cursor2.getInt(cursor2.getColumnIndex("state")));
+    			list.add(map);
+    		}
+    	}
 		return list;
 	}
 	

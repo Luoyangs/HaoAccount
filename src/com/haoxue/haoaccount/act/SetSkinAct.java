@@ -58,6 +58,7 @@ public class SetSkinAct extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				Intent intent = new Intent(SetSkinAct.this,ShowImageAct.class);
+				intent.putExtra("type", "INT");
 				intent.putExtra("imgId", Integer.parseInt(list.get(arg2).get("imgId").toString()));
 				startActivity(intent);
 			}

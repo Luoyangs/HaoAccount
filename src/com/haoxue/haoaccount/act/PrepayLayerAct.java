@@ -105,7 +105,6 @@ public class PrepayLayerAct extends Activity {
 			final TextView cprepay = (TextView)view.findViewById(R.id.pre);
 	        final ProgressBar cbar = (ProgressBar)view.findViewById(R.id.num);
 			final float itempre = Float.parseFloat(cprepay.getText().toString().substring(2));
-			ToastUtil.showShort(getBaseContext(), ""+itempre);
 			//通过布局注入器，注入布局给View对象
 	        View keyboardView = getLayoutInflater().inflate(R.layout.pop_keyboard, null);
 	        //初始化

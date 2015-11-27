@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/btn_sign"
+        style="@style/menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/select_bg3"
+        android:drawableLeft="@drawable/fankui"
+        android:drawablePadding="8dp"
+        android:paddingLeft="15sp"
+        android:text="一键签到" />
+
+    <TextView
+        android:id="@+id/btn_his"
+        style="@style/menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/select_bg3"
+        android:drawableLeft="@drawable/qiandao"
+        android:drawablePadding="12dp"
+        android:paddingLeft="18sp"
+        android:text="查看历史" />
+
+    <TextView
+        android:id="@+id/btn_fav"
+        style="@style/menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/select_bg3"
+        android:drawableLeft="@drawable/shiyong"
+        android:drawablePadding="8dp"
+        android:paddingLeft="15sp"
+        android:text="查看奖励" />
+
+    <TextView
+        android:id="@+id/btn_sha"
+        style="@style/menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@drawable/select_bg3"
+        android:drawableLeft="@drawable/fenxiang"
+        android:drawablePadding="8dp"
+        android:paddingLeft="15sp"
+        android:text="分享" />
+
+</LinearLayout>

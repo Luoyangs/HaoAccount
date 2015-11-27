@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@drawable/circle_bg_white"
+        android:orientation="vertical"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:gravity="center_vertical"
+            android:text="提示"
+            android:textColor="#000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tvName"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical"
+            android:text="确定删除选中的项目？"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/tvContent"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal"
+            android:paddingRight="24dp" >
+
+            <TextView
+                android:id="@+id/btnCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_btn_bg"
+                android:gravity="center_vertical"
+                android:paddingBottom="7dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="7dp"
+                android:text="取消"
+                android:textColor="#009788"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/btnOk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="13dp"
+                android:background="@drawable/circle_btn_bg"
+                android:gravity="center_vertical"
+                android:paddingBottom="7dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="7dp"
+                android:text="确定"
+                android:textColor="#009788"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

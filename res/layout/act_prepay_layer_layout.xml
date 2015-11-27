@@ -15,7 +15,6 @@
             android:id="@+id/titilbar_left"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:layout_marginRight="14sp"
             android:background="@drawable/btn_back"
             android:paddingLeft="20sp"
             android:paddingRight="20sp" />

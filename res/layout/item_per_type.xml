@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp" >
+
+        <ImageView
+            android:id="@+id/child_img"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:layout_margin="7dp"
+            android:src="@drawable/h1" />
+
+        <TextView
+            android:id="@+id/child_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/child_img"
+            android:gravity="center"
+            android:text="收入"
+            android:textColor="#fff"
+            android:textSize="16dp" />
+
+	<TextView
+	    android:id="@+id/child_tip"
+	    android:layout_width="wrap_content"
+	    android:layout_height="24dp"
+	    android:layout_alignLeft="@+id/child_name"
+	    android:layout_alignParentBottom="true"
+	    android:paddingBottom="5dp"
+	    android:gravity="center"
+	    android:text="班费开支"
+	    android:textColor="#fff"
+	    android:textSize="12dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

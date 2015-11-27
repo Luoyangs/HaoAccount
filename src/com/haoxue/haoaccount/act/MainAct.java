@@ -3,7 +3,7 @@ package com.haoxue.haoaccount.act;
 import com.haoxue.haoaccount.act.frag.MainFragment;
 import com.haoxue.haoaccount.base.ActivityManager;
 import com.haoxue.haoaccount.base.ShareDataHelper;
-import com.haoxue.haoaccount.view.CuAlertDialog;
+import com.haoxue.haoaccount.view.CuTipDialog;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuDrawable;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuDrawable.Stroke;
 import com.haoxue.haoaccount.view.materialmenu.MaterialMenuIcon;
@@ -104,26 +104,52 @@ public class MainAct extends FragmentActivity {
 		startActivity(new Intent(MainAct.this, MessageAct.class));
 	}
 	
+	@OnClick(R.id.sign)
+	public void setSign(View view){
+		closeLeftMenu();
+		startActivity(new Intent(MainAct.this, SignAct.class));
+	}
+	
+	@OnClick(R.id.gv_note)
+	public void setNote(View view){
+		closeLeftMenu();
+		startActivity(new Intent(MainAct.this, NoteListAct.class));
+	}
+	
+	@OnClick(R.id.gv_liushui)
+	public void setList(View view){
+		closeLeftMenu();
+		startActivity(new Intent(MainAct.this, NoteListAct.class));
+	}
+	
+	@OnClick(R.id.gv_magr)
+	public void setMagr(View view){
+		closeLeftMenu();
+		startActivity(new Intent(MainAct.this, NoteListAct.class));
+	}
+	
+	@OnClick(R.id.gv_async)
+	public void setAsync(View view){
+		closeLeftMenu();
+		//同步数据
+	}
+	
 	@OnClick(R.id.exit)
 	public void setExit(View view) {
 		closeLeftMenu();
-		View contentView = getLayoutInflater().inflate(R.layout.cu_dialog_exitapp_layout, null);
-		CuAlertDialog dialog = new CuAlertDialog.Builder(MainAct.this)
-		.setContentView(contentView)
-		.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss(); 
-				startActivity(new Intent(MainAct.this,ExitAppAct.class));
-			}
-		})
-		.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-			}
-		})
-		.create();
-		dialog.show();
-		dialog.setCanceledOnTouchOutside(false);
+		new CuTipDialog.Builder(MainAct.this).setMessage("真的要退出么？")
+			.setPositiveButton(new DialogInterface.OnClickListener(){
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss(); 
+					startActivity(new Intent(MainAct.this,ExitAppAct.class));
+				}
+			}).setNegativeButton(new DialogInterface.OnClickListener(){
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss(); 
+				}
+			}).create();
 	}
 	
 	@OnClick(R.id.userImg)

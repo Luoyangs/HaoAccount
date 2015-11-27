@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp"
+    android:paddingLeft="6dp" >
+
+    <ImageView
+        android:id="@+id/item_video_img"
+        android:layout_width="50dp"
+        android:layout_height="44dp"
+        android:src="@drawable/bg2" />
+
+    <TextView
+        android:id="@+id/item_video_txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/item_video_img"
+        android:text="相对看好谁开的是苦的很快速新的空间所得税"
+        android:textColor="@color/white"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/item_video_txt_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/item_video_txt_name"
+        android:layout_alignBottom="@+id/item_video_img"
+        android:layout_marginRight="10dp"
+        android:text="2015-11-44"
+        android:textColor="@color/white"
+        android:textSize="10dp" />
+
+</RelativeLayout>

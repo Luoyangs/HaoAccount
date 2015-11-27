@@ -65,6 +65,18 @@ public final class ShareDataHelper {
 		return appshare.getInt("imgId", R.drawable.bg1);
 	}
 	
+	/**保存天气信息*/
+	public void saveWeather(String city,String weather){
+		Editor editor = appshare.edit();
+		editor.putString(city, weather);
+		editor.commit();
+	}
+	
+	/**获取天气信息*/
+	public String getWeather(String city){
+		return appshare.getString(city,"");
+	}
+	
 	/**保存登录密码信息*/
 	public void savePassword(String key,String value){
 		Editor editor = appshare.edit();
@@ -128,5 +140,11 @@ public final class ShareDataHelper {
 	/**判断是否存在用户登录*/
 	public boolean hasLogin(){
 		return !usershare.getString("userId", "").equals("");
+	}
+	
+	/**获取用户ID*/
+	public int getUserId(){
+		String userId = usershare.getString("userId", "");
+		return userId.equals("")?0:Integer.parseInt(userId);
 	}
 }

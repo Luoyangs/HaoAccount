@@ -5,6 +5,7 @@ import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,7 +30,12 @@ public class ShowImageAct extends Activity {
 		super.onCreate(savedInstanceState);
 		ViewUtils.inject(this);
 
-		imageView.setImageResource(getIntent().getIntExtra("imgId",R.drawable.bg1));
+		String type = getIntent().getStringExtra("type");
+		if(type.equals("INT")){
+			imageView.setImageResource(getIntent().getIntExtra("imgId",R.drawable.bg1));
+		}else if(type.equals("BITMAP")){
+			imageView.setImageBitmap((Bitmap)getIntent().getParcelableExtra("imgurl"));
+		}
 		//添加监听
 		imageView.setOnClickListener(new OnClickListener() {
 			

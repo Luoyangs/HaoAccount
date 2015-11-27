@@ -5,9 +5,10 @@ import java.util.List;
 
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.haoxue.haoaccount.R;
-import com.haoxue.haoaccount.util.ToastUtil;
+import com.haoxue.haoaccount.act.MessageDetailAct;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,16 +30,26 @@ import android.widget.TextView;
 public class MessageFragment extends Fragment implements OnItemClickListener{
 
 	private List<HashMap<String, String>> list;
+	private MyAdapter myAdapter;
 	
 	public MessageFragment(List<HashMap<String, String>> list){
 		this.list = list;
+		myAdapter = new MyAdapter();
+	}
+	
+	public void setList(List<HashMap<String, String>> list){
+		this.list = list;
+		myAdapter.notifyDataSetChanged();
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		if (list == null || list.size() == 0 ) {
+			View emptyView = inflater.inflate(R.layout.no_data_layout, null);
+			return emptyView;
+		}
 		View view = inflater.inflate(R.layout.fragment_message_layout, null, false);
 		ListView listView = (ListView) view.findViewById(R.id.listView);
-		MyAdapter myAdapter = new MyAdapter();
 		SwingLeftInAnimationAdapter swingLeftInAnimationAdapter = new SwingLeftInAnimationAdapter(myAdapter);
 		swingLeftInAnimationAdapter.setListView(listView);
 		listView.setAdapter(swingLeftInAnimationAdapter);
@@ -47,8 +59,10 @@ public class MessageFragment extends Fragment implements OnItemClickListener{
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		
-		ToastUtil.showLong(getActivity(), ""+position);
+		getActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+		Intent intent = new Intent(getActivity(),MessageDetailAct.class);
+		intent.putExtra("msgId", list.get(position).get("id"));
+		getActivity().startActivity(intent);
 	}
 	
 	private class MyAdapter extends BaseAdapter {
@@ -74,6 +88,8 @@ public class MessageFragment extends Fragment implements OnItemClickListener{
 				convertView = getActivity().getLayoutInflater().inflate(R.layout.lv_item4, null);
 			}
 			TextView title = (TextView) convertView.findViewById(R.id.text);
+			ImageView img = (ImageView) convertView.findViewById(R.id.img);
+			img.setVisibility(Integer.parseInt(list.get(position).get("state"))==0?View.VISIBLE:View.INVISIBLE);
 			title.setText(list.get(position).get("title"));
 			return convertView;
 		}

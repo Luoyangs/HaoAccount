@@ -11,7 +11,6 @@ import java.util.Map;
 
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-
 import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.adapter.ListViewAdapter;
 import com.haoxue.haoaccount.adapter.ListViewAdapter2;
@@ -86,6 +85,8 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 	private SQLiteDatabase database;
 	private String ptype = "";
 	private String ctype = "";
+	private ListViewAdapter2 pTypeAdapter;
+	private ListViewAdapter2 cTypeAdapter;
 	
 	@SuppressLint("SimpleDateFormat")
 	@Override
@@ -98,16 +99,16 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		isEdit = getIntent().getIntExtra("isEdit", 0);
 		if (isEdit == 0) {
-			titilbar.setText("新加收入");
+			titilbar.setText("收入");
 			tvDate.setText(sdf.format(new Date()));
 			tvDate.setOnClickListener(this);
 			tvType.setOnClickListener(this);
 			tvSrc.setOnClickListener(this);
 			tvTo.setOnClickListener(this);
 		}else if (isEdit == 1) {
-			titilbar.setText("查看收入");
+			titilbar.setText("收入");
 		}else{
-			titilbar.setText("编辑收入");
+			titilbar.setText("收入");
 		}
 	}
 
@@ -208,7 +209,7 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 				values.put("froms", tvSrc.getText().toString());  
 				values.put("save", tvTo.getText().toString());  
 				values.put("info", tvInfo.getText().toString()); 
-				values.put("info", tvDate.getText().toString()); 
+				values.put("date", tvDate.getText().toString()); 
 				long result = database.insert(Constant.DB.INCOME_TABLE_NAME, "id", values);
 				if (result > 0) {
 					finish = true;
@@ -443,11 +444,11 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
         pw.setBackgroundDrawable(new BitmapDrawable());
         //将window视图显示在最下面
         pw.showAtLocation(findViewById(R.id.myscroll),Gravity.BOTTOM, 0, 0);
-
-        ListView plv = (ListView) myView.findViewById(R.id.plist);
+        final ListView plv = (ListView) myView.findViewById(R.id.plist);
         final ListView clv = (ListView) myView.findViewById(R.id.clist);
         TextView btnok = (TextView) myView.findViewById(R.id.btnok);
-        plv.setAdapter(new ListViewAdapter2(AddIncomeAct.this, plist));
+        pTypeAdapter = new ListViewAdapter2(AddIncomeAct.this, plist);
+        plv.setAdapter(pTypeAdapter);
         plv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -455,24 +456,32 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
             	if (ptype.length() >0) {
             		ptype = "";
 				}
+            	pTypeAdapter.setSelectIndex(position);
+            	pTypeAdapter.notifyDataSetChanged();
             	ptypeId = position;
             	ptype = plist.get(position).get("name");
             	final ArrayList<Map<String, String>> clist = getChildType(ptype);
-                clv.setAdapter(new ListViewAdapter2(AddIncomeAct.this, clist));
+            	cTypeAdapter = new ListViewAdapter2(AddIncomeAct.this, clist);
+                clv.setAdapter(cTypeAdapter);
                 clv.setOnItemClickListener(new OnItemClickListener() {
 
 					@Override
-					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 						if (ctype.length() >0) {
 							ctype = "";
 						}
-						ctypeId = position;
-						ctype = clist.get(position).get("name");
+						cTypeAdapter.setSelectIndex(pos);
+						cTypeAdapter.notifyDataSetChanged();
+						ctypeId = pos;
+						ctype = clist.get(pos).get("name");
 						tvType.setText(ptype+"-"+ctype);
 					}
                 });
             }
         });
+        if (plv != null) {
+        	plv.performItemClick( plv.getChildAt(0), 0, pTypeAdapter.getItemId(0));
+		}
         btnok.setOnClickListener(new OnClickListener() {
 			
 			@Override
