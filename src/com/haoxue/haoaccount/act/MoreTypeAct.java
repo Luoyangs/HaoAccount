@@ -69,7 +69,7 @@ public class MoreTypeAct extends Activity {
 				}else if (type.equals("预算")) {
 					startActivity(new Intent(MoreTypeAct.this,PrepayAct.class));
 				}else if (type.equals("借贷")) {
-					///startActivity(new Intent(MoreTypeAct.this,AddIncomeAct.class));
+					startActivity(new Intent(MoreTypeAct.this,AddLendAct.class));
 				}else if (type.equals("报销")) {
 					///startActivity(new Intent(MoreTypeAct.this,AddIncomeAct.class));
 				}else if (type.equals("转账")) {

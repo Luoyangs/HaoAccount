@@ -52,7 +52,7 @@ public class PersonTypeAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(final int arg0, View arg1, ViewGroup arg2) {
-		View view = mInflater.inflate(R.layout.item_per_type, null,false);
+		View view = mInflater.inflate(R.layout.item_moretype_per_layout, null,false);
 		ImageView mImg = (ImageView) view.findViewById(R.id.child_img);
 		TextView mText = (TextView) view.findViewById(R.id.child_name);
 		TextView mTip = (TextView) view.findViewById(R.id.child_tip);

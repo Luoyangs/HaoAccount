@@ -257,8 +257,6 @@ public class AddRecordAct extends Activity {
 					break;
 				}
 				AddNoteAct.musicList.add(FilePath);
-				String musicName = FilePath.substring(FilePath.lastIndexOf("/")+1);
-				ToastUtil.showLong(AddRecordAct.this, "JJ:"+FilePath);
 				AddRecordAct.this.finish();
 				break;
 			case R.id.bt_back:

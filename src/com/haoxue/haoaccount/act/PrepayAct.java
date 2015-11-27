@@ -9,7 +9,7 @@ import com.handmark.pulltorefresh.PullToRefreshBase;
 import com.handmark.pulltorefresh.PullToRefreshScrollView;
 import com.handmark.pulltorefresh.PullToRefreshBase.OnRefreshListener;
 import com.haoxue.haoaccount.R;
-import com.haoxue.haoaccount.adapter.ListViewAdapter3;
+import com.haoxue.haoaccount.adapter.PrepayAdapter;
 import com.haoxue.haoaccount.base.AssetDBManager;
 import com.haoxue.haoaccount.base.Constant;
 import com.haoxue.haoaccount.base.Constant.MSG;
@@ -129,7 +129,7 @@ public class PrepayAct extends Activity {
 		tv_totalsum.setText(String.valueOf(totalsum));
 		tv_presum.setText(String.valueOf(totalsum-paysum));
 		tv_paysum.setText(String.valueOf(paysum));
-		listView.setAdapter(new ListViewAdapter3(PrepayAct.this, list));
+		listView.setAdapter(new PrepayAdapter(PrepayAct.this, list));
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -106,15 +106,15 @@ public class DayBalanceAct extends Activity {
 	    	Map<String, String> map = list.get(position);
 	    	if (position == 0) {
 	        	if (convertView == null) {
-		            convertView = inflater.inflate(R.layout.lv_item_balance, null);
+		            convertView = inflater.inflate(R.layout.item_balance_top_layout, null);
 		        }
 			}else if (position == list.size() - 1){
 				if (convertView == null) {
-		            convertView = inflater.inflate(R.layout.lv_item_balance3, null);
+		            convertView = inflater.inflate(R.layout.item_balance_bom_layout, null);
 		        }
 			}else{
 				if (convertView == null) {
-		            convertView = inflater.inflate(R.layout.lv_item_balance2, null);
+		            convertView = inflater.inflate(R.layout.item_balance_mid_layout, null);
 		        }
 			}
 	        

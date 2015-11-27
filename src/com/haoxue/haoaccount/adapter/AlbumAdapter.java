@@ -60,7 +60,7 @@ public class AlbumAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup arg2) {
 		if (convertView == null) {
-			convertView = LayoutInflater.from(context).inflate(R.layout.album_select_imageview, null,false);
+			convertView = LayoutInflater.from(context).inflate(R.layout.item_albumselect_layout, null,false);
 		}
 		ImageView imageView = (ImageView) convertView.findViewById(R.id.image_view);
 		ToggleButton toggleButton = (ToggleButton) convertView.findViewById(R.id.toggle_button);

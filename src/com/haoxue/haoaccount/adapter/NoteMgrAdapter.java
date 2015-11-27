@@ -51,7 +51,7 @@ public class NoteMgrAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View arg1, ViewGroup arg2) {
-		View view = mInflater.inflate(R.layout.lv_item1, null, false);
+		View view = mInflater.inflate(R.layout.item_imgtext_layout, null, false);
 		TextView text = (TextView) view.findViewById(R.id.text);
 		ImageView img = (ImageView) view.findViewById(R.id.img);
 		img.setImageResource(Constant.LISTVIEWIMG[position%10]);

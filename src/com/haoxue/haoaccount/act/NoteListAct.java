@@ -216,7 +216,7 @@ public class NoteListAct extends Activity implements OnClickListener{
 	@SuppressWarnings("deprecation")
 	@OnClick(R.id.titilbar_right)
 	public void onAddClick(View view){
-		View menu = getLayoutInflater().inflate(R.layout.pop_layout4, null);
+		View menu = getLayoutInflater().inflate(R.layout.pop_notelistmenu_layout, null);
 		menu.findViewById(R.id.btn_mp).setOnClickListener(this);
 		menu.findViewById(R.id.btn_ap).setOnClickListener(this);
 		menu.findViewById(R.id.btn_an).setOnClickListener(this);

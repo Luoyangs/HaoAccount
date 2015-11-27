@@ -96,7 +96,7 @@ public class AddNoteAct extends Activity implements OnClickListener{
 	@OnClick(R.id.savemenu)
 	public void onSave(View view){
 		//弹出保存页面
-		View popview = getLayoutInflater().inflate(R.layout.popmenu_save_layout, null,false);
+		View popview = getLayoutInflater().inflate(R.layout.pop_savemenu_layout, null,false);
 		popwind = new PopupWindow(popview, view.getWidth(), 330, true);
 		popwind.setBackgroundDrawable(new BitmapDrawable());
 		popwind.showAsDropDown(view);
@@ -110,7 +110,7 @@ public class AddNoteAct extends Activity implements OnClickListener{
 	@OnClick(R.id.bgmenu)
 	public void onBgColor(View view){
 		//弹出保存页面
-		View popview = getLayoutInflater().inflate(R.layout.popmenu_bgcolor_layout, null,false);
+		View popview = getLayoutInflater().inflate(R.layout.pop_bgcolormenu_layout, null,false);
 		popwind = new PopupWindow(popview, view.getWidth(), 740, true);
 		popwind.setBackgroundDrawable(new BitmapDrawable());
 		popwind.showAsDropDown(view);
@@ -127,7 +127,7 @@ public class AddNoteAct extends Activity implements OnClickListener{
 	@OnClick(R.id.moremenu)
 	public void onMore(View view){
 		//弹出附件页面
-		View popview = getLayoutInflater().inflate(R.layout.popmenu_more_layout, null,false);
+		View popview = getLayoutInflater().inflate(R.layout.pop_attachmenu_layout, null,false);
 		popwind = new PopupWindow(popview, view.getWidth(), 460, true);
 		popwind.setBackgroundDrawable(new BitmapDrawable());
 		popwind.showAsDropDown(view);

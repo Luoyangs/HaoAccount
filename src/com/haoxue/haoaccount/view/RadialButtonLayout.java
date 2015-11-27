@@ -58,7 +58,7 @@ public class RadialButtonLayout extends FrameLayout {
 
     public RadialButtonLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        LayoutInflater.from(context).inflate( R.layout.layout_radial_buttons, this);
+        LayoutInflater.from(context).inflate( R.layout.fragment_radialmenu_layout, this);
         this.context = context;
         if (isInEditMode()) {
             //

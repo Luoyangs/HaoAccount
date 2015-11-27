@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="outcome_from">
-        <item>账户收入</item>
-        <item>账户预算</item>
-	</string-array>
-</resources>

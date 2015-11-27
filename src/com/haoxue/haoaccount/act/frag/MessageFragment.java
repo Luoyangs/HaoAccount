@@ -85,7 +85,7 @@ public class MessageFragment extends Fragment implements OnItemClickListener{
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
-				convertView = getActivity().getLayoutInflater().inflate(R.layout.lv_item4, null);
+				convertView = getActivity().getLayoutInflater().inflate(R.layout.item_messagelist_layout, null);
 			}
 			TextView title = (TextView) convertView.findViewById(R.id.text);
 			ImageView img = (ImageView) convertView.findViewById(R.id.img);

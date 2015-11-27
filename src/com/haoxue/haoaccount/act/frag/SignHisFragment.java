@@ -71,7 +71,7 @@ public class SignHisFragment extends Fragment {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
-				convertView = getActivity().getLayoutInflater().inflate( R.layout.lv_item6, null);
+				convertView = getActivity().getLayoutInflater().inflate( R.layout.item_signhistory_layout, null);
 			}
 			TextView favName = (TextView) convertView.findViewById(R.id.favName);//签到积分
 			TextView dlName = (TextView) convertView.findViewById(R.id.dlName);//总分

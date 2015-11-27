@@ -50,7 +50,7 @@ public class HorizontalScrollViewAdapter extends BaseAdapter{
 		ViewHolder viewHolder = null;
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
-			convertView = mInflater.inflate(R.layout.item_type, parent, false);
+			convertView = mInflater.inflate(R.layout.item_moretype_sys_layout, parent, false);
 			viewHolder.mImg = (ImageView) convertView.findViewById(R.id.child_img);
 			//viewHolder.mText = (TextView) convertView.findViewById(R.id.child_name);
 			convertView.setTag(viewHolder);

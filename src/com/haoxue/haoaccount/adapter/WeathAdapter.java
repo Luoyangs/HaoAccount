@@ -45,7 +45,7 @@ public class WeathAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View arg1, ViewGroup arg2) {
-		View view = LayoutInflater.from(context).inflate(R.layout.weather_item, null,false);
+		View view = LayoutInflater.from(context).inflate(R.layout.item_gridweather_layout, null,false);
 		HXImageView image = (HXImageView) view.findViewById(R.id.img);
 		TextView temp = (TextView) view.findViewById(R.id.temptext);
 		TextView time = (TextView) view.findViewById(R.id.timetext);

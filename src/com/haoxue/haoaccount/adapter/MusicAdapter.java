@@ -48,7 +48,7 @@ public class MusicAdapter extends BaseAdapter{
 
 	@Override
 	public View getView(int position, View arg1, ViewGroup arg2) {
-		View view = LayoutInflater.from(context).inflate(R.layout.lv_item8, null,false);
+		View view = LayoutInflater.from(context).inflate(R.layout.item_notemusic_layout, null,false);
 		TextView name = (TextView) view.findViewById(R.id.favName);
 		TextView time = (TextView) view.findViewById(R.id.fatime);
 		ImageView Img = (ImageView) view.findViewById(R.id.img0);

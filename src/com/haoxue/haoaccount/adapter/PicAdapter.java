@@ -63,7 +63,7 @@ public class PicAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup arg2) {
 		if (convertView == null) {
-			convertView = LayoutInflater.from(context).inflate(R.layout.lv_item9, null, false);
+			convertView = LayoutInflater.from(context).inflate(R.layout.item_notepic_layout, null, false);
 		}
 		ImageView image = (ImageView) convertView.findViewById(R.id.item_grida_image);
 		if (position == Bimp.tempSelectBitmap.size()) {

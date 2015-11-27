@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.haoxue.haoaccount.R;
-import com.haoxue.haoaccount.adapter.ListViewAdapter3;
+import com.haoxue.haoaccount.adapter.PrepayAdapter;
 import com.haoxue.haoaccount.base.AssetDBManager;
 import com.haoxue.haoaccount.base.Constant;
 import com.haoxue.haoaccount.base.ShareDataHelper;
@@ -93,7 +93,7 @@ public class PrepayLayerAct extends Activity {
 		}
 		//初始化数据集
 		database = new AssetDBManager().openDatabase(this);
-		listView.setAdapter(new ListViewAdapter3(PrepayLayerAct.this, getChildType()));
+		listView.setAdapter(new PrepayAdapter(PrepayLayerAct.this, getChildType()));
 		listView.setOnItemClickListener(new MyOnItemClickListener());
 	}
 	
@@ -106,7 +106,7 @@ public class PrepayLayerAct extends Activity {
 	        final ProgressBar cbar = (ProgressBar)view.findViewById(R.id.num);
 			final float itempre = Float.parseFloat(cprepay.getText().toString().substring(2));
 			//通过布局注入器，注入布局给View对象
-	        View keyboardView = getLayoutInflater().inflate(R.layout.pop_keyboard, null);
+	        View keyboardView = getLayoutInflater().inflate(R.layout.pop_keyboard_layout, null);
 	        //初始化
 	        isDecimal = false;
 	        keyval = (TextView) keyboardView.findViewById(R.id.keyval);

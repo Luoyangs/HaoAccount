@@ -79,7 +79,7 @@ public class SignFavFragment extends Fragment implements OnItemClickListener {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null) {
-				convertView = getActivity().getLayoutInflater().inflate( R.layout.lv_item5, null);
+				convertView = getActivity().getLayoutInflater().inflate( R.layout.item_signlevel_layout, null);
 			}
 			ImageView img = (ImageView) convertView.findViewById(R.id.img0);
 			TextView favName = (TextView) convertView.findViewById(R.id.favName);

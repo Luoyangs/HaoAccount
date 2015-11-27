@@ -1,24 +1,17 @@
 package com.haoxue.haoaccount.act;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import com.haoxue.haoaccount.R;
-import com.haoxue.haoaccount.adapter.ListViewAdapter;
-import com.haoxue.haoaccount.adapter.ListViewAdapter2;
+import com.haoxue.haoaccount.adapter.PopMultTypeAdapter;
 import com.haoxue.haoaccount.base.AssetDBManager;
+import com.haoxue.haoaccount.base.BaseActivity;
 import com.haoxue.haoaccount.base.Constant;
 import com.haoxue.haoaccount.util.ToastUtil;
-import com.haoxue.haoaccount.view.wheel.StrericWheelAdapter;
-import com.haoxue.haoaccount.view.wheel.WheelView;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ContentView;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -31,13 +24,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
@@ -51,7 +41,7 @@ import android.widget.TextView;
  * 时间:2015-10-5
  */
 @ContentView(R.layout.act_addincom_layout)
-public class AddIncomeAct extends FragmentActivity implements OnClickListener{
+public class AddIncomeAct extends BaseActivity implements OnClickListener{
 
 	@ViewInject(R.id.titilbar_title)
 	private TextView titilbar;
@@ -68,14 +58,6 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 	@ViewInject(R.id.etinfo)
 	private EditText tvInfo;
 	
-	private WheelView yearWheel,monthWheel,dayWheel,hourWheel,minuteWheel,secondWheel;
-	private static String[] yearContent=null;
-	private static String[] monthContent=null;
-	private static String[] dayContent=null;
-	private static String[] hourContent = null;
-	private static String[] minuteContent=null;
-	private static String[] secondContent=null;
-	
 	private int index = -1;
 	private boolean finish = false;
 	private int userId = -1;
@@ -85,8 +67,8 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 	private SQLiteDatabase database;
 	private String ptype = "";
 	private String ctype = "";
-	private ListViewAdapter2 pTypeAdapter;
-	private ListViewAdapter2 cTypeAdapter;
+	private PopMultTypeAdapter pTypeAdapter;
+	private PopMultTypeAdapter cTypeAdapter;
 	
 	@SuppressLint("SimpleDateFormat")
 	@Override
@@ -95,12 +77,12 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 		
 		ViewUtils.inject(this);
 		database = new AssetDBManager().openDatabase(this);
+		database = new AssetDBManager().openDatabase(this);
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		isEdit = getIntent().getIntExtra("isEdit", 0);
 		if (isEdit == 0) {
 			titilbar.setText("收入");
-			tvDate.setText(sdf.format(new Date()));
+			tvDate.setText(dateStr);//默认
 			tvDate.setOnClickListener(this);
 			tvType.setOnClickListener(this);
 			tvSrc.setOnClickListener(this);
@@ -111,7 +93,25 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 			titilbar.setText("收入");
 		}
 	}
-
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.tv_type:
+			initType(view);
+			break;
+		case R.id.tv_src:
+			initSingleChoice(view, Constant.DATA_OUT_ACCOUNT, EditPropertyAct.class);
+			break;
+		case R.id.tv_to:
+			initSingleChoice(view, Constant.DATA_ZA_CMP, EditPropertyAct.class);
+			break;
+		case R.id.tv_date:
+			initDateTime(view);
+			break;
+		}
+	}
+	
 	@OnClick(R.id.titilbar_left)
 	public void onBack(View view){
 		finishPage();
@@ -175,7 +175,6 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 					break;
 				}
 			}
-
 			@Override
 			public void onFinish() {
 				index = -1;
@@ -227,215 +226,12 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
 			}
 		});
 	}
-	
-	private void finishPage(){
-		finish();
-		overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-	}
 
-	@Override
-	public void onClick(View view) {
-		switch (view.getId()) {
-		case R.id.tv_type:
-			initType(view);
-			break;
-		case R.id.tv_src:
-			initSrc(view);
-			break;
-		case R.id.tv_to:
-			initTo(view);
-			break;
-		case R.id.tv_date:
-			initDateTimer();
-			break;
-		}
-	}
-	
-	private void initTo(View view) {
-		String[] srcs = getResources().getStringArray(R.array.income_save);
-		final List<String> list = Arrays.asList(srcs);
-		//通过布局注入器，注入布局给View对象
-        View myView = getLayoutInflater().inflate(R.layout.pop_layout, null);
-        //通过view 和宽·高，构造PopopWindow
-        final PopupWindow pw = new PopupWindow(myView, 420, 500, true);
-        pw.setBackgroundDrawable(getResources().getDrawable(R.color.base_gray));
-        //设置焦点为可点击
-        pw.setFocusable(true);//可以试试设为false的结果
-        //将window视图显示在myButton下面
-        pw.showAsDropDown(view,0,0,Gravity.RIGHT);
-
-        ListView lv = (ListView) myView.findViewById(R.id.lv_pop);
-        lv.setAdapter(new ListViewAdapter(AddIncomeAct.this, list));
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                tvTo.setText(list.get(position));
-                pw.dismiss();
-            }
-        });
-	}
-
-	private void initSrc(View view){
-		String[] srcs = getResources().getStringArray(R.array.income_from);
-		final List<String> list = Arrays.asList(srcs);
-		//通过布局注入器，注入布局给View对象
-        View myView = getLayoutInflater().inflate(R.layout.pop_layout, null);
-        //通过view 和宽·高，构造PopopWindow
-        final PopupWindow pw = new PopupWindow(myView, 420, 500, true);
-        pw.setBackgroundDrawable(getResources().getDrawable(R.color.base_gray));
-        //设置焦点为可点击
-        pw.setFocusable(true);//可以试试设为false的结果
-        //将window视图显示在myButton下面
-        pw.showAsDropDown(view,0,0,Gravity.RIGHT);
-
-        ListView lv = (ListView) myView.findViewById(R.id.lv_pop);
-        lv.setAdapter(new ListViewAdapter(AddIncomeAct.this, list));
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                tvSrc.setText(list.get(position));
-                pw.dismiss();
-            }
-        });
-	}
-	
-	@SuppressWarnings("deprecation")
-	private void initDateTimer(){
-		yearContent = new String[10];
-		for(int i=0;i<10;i++)
-			yearContent[i] = String.valueOf(i+2013);
-		
-		monthContent = new String[12];
-		for(int i=0;i<12;i++)
-		{
-			monthContent[i]= String.valueOf(i+1);
-			if(monthContent[i].length()<2)
-	        {
-				monthContent[i] = "0"+monthContent[i];
-	        }
-		}
-			
-		dayContent = new String[31];
-		for(int i=0;i<31;i++)
-		{
-			dayContent[i]=String.valueOf(i+1);
-			if(dayContent[i].length()<2)
-	        {
-				dayContent[i] = "0"+dayContent[i];
-	        }
-		}	
-		hourContent = new String[24];
-		for(int i=0;i<24;i++)
-		{
-			hourContent[i]= String.valueOf(i);
-			if(hourContent[i].length()<2)
-	        {
-				hourContent[i] = "0"+hourContent[i];
-	        }
-		}
-			
-		minuteContent = new String[60];
-		for(int i=0;i<60;i++)
-		{
-			minuteContent[i]=String.valueOf(i);
-			if(minuteContent[i].length()<2)
-	        {
-				minuteContent[i] = "0"+minuteContent[i];
-	        }
-		}
-		secondContent = new String[60];
-		for(int i=0;i<60;i++)
-		{
-			secondContent[i]=String.valueOf(i);
-			if(secondContent[i].length()<2)
-	        {
-				secondContent[i] = "0"+secondContent[i];
-	        }
-		}
-		Calendar calendar = Calendar.getInstance();
-	    int curYear = calendar.get(Calendar.YEAR);
-        int curMonth= calendar.get(Calendar.MONTH)+1;
-        int curDay = calendar.get(Calendar.DAY_OF_MONTH);
-        int curHour = calendar.get(Calendar.HOUR_OF_DAY);
-        int curMinute = calendar.get(Calendar.MINUTE);
-        int curSecond = calendar.get(Calendar.SECOND);
- 	    
-        View view = LayoutInflater.from(this).inflate(R.layout.time_picker, null);
-	    yearWheel = (WheelView)view.findViewById(R.id.yearwheel);
-	    monthWheel = (WheelView)view.findViewById(R.id.monthwheel);
-	    dayWheel = (WheelView)view.findViewById(R.id.daywheel);
-	    hourWheel = (WheelView)view.findViewById(R.id.hourwheel);
-	    minuteWheel = (WheelView)view.findViewById(R.id.minutewheel);
-	    secondWheel = (WheelView)view.findViewById(R.id.secondwheel);
-        
-        yearWheel.setAdapter(new StrericWheelAdapter(yearContent));
-	 	yearWheel.setCurrentItem(curYear-2013);
-	    yearWheel.setCyclic(true);
-	    yearWheel.setInterpolator(new AnticipateOvershootInterpolator());
- 
-        monthWheel.setAdapter(new StrericWheelAdapter(monthContent));
-        monthWheel.setCurrentItem(curMonth-1);
-     
-        monthWheel.setCyclic(true);
-        monthWheel.setInterpolator(new AnticipateOvershootInterpolator());
-        
-        dayWheel.setAdapter(new StrericWheelAdapter(dayContent));
-        dayWheel.setCurrentItem(curDay-1);
-        dayWheel.setCyclic(true);
-        dayWheel.setInterpolator(new AnticipateOvershootInterpolator());
-        
-        hourWheel.setAdapter(new StrericWheelAdapter(hourContent));
-        hourWheel.setCurrentItem(curHour);
-        hourWheel.setCyclic(true);
-        hourWheel.setInterpolator(new AnticipateOvershootInterpolator());
-        
-        minuteWheel.setAdapter(new StrericWheelAdapter(minuteContent));
-        minuteWheel.setCurrentItem(curMinute);
-        minuteWheel.setCyclic(true);
-        minuteWheel.setInterpolator(new AnticipateOvershootInterpolator());
-        
-        secondWheel.setAdapter(new StrericWheelAdapter(secondContent));
-        secondWheel.setCurrentItem(curSecond);
-        secondWheel.setCyclic(true);
-        secondWheel.setInterpolator(new AnticipateOvershootInterpolator());
-        
-        final PopupWindow pw = new PopupWindow(view, LayoutParams.MATCH_PARENT, 636, true);
-        //设置焦点为可点击
-        pw.setFocusable(true);//可以试试设为false的结果
-        pw.setOutsideTouchable(true);  
-        pw.setBackgroundDrawable(new BitmapDrawable());
-        //将window视图显示在最下面
-        pw.showAtLocation(findViewById(R.id.myscroll),Gravity.BOTTOM, 0, 0);
-        TextView btnok = (TextView) view.findViewById(R.id.btnok);
-        btnok.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				StringBuffer sb = new StringBuffer();  
-        		sb.append(yearWheel.getCurrentItemValue())
-        		  .append("-")
-        		  .append(monthWheel.getCurrentItemValue())
-        		  .append("-")
-        		  .append(dayWheel.getCurrentItemValue())
-        		  .append(" ") 
-        		  .append(hourWheel.getCurrentItemValue())  
-        		  .append(":")
-        		  .append(minuteWheel.getCurrentItemValue())
-        		  .append(":")
-        		  .append(secondWheel.getCurrentItemValue());  
-        		tvDate.setText(sb.toString());
-				pw.dismiss();
-			}
-		});
-	}
-	
 	@SuppressWarnings("deprecation")
 	private void initType(View view){
 		final ArrayList<Map<String, String>> plist = getParentType();
 		//通过布局注入器，注入布局给View对象
-        View myView = getLayoutInflater().inflate(R.layout.pop_layout2, null);
+        View myView = getLayoutInflater().inflate(R.layout.pop_imgtext_layout, null);
         //通过view 和宽·高，构造PopopWindow
         final PopupWindow pw = new PopupWindow(myView, LayoutParams.MATCH_PARENT, 600, true);
         //设置焦点为可点击
@@ -447,7 +243,7 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
         final ListView plv = (ListView) myView.findViewById(R.id.plist);
         final ListView clv = (ListView) myView.findViewById(R.id.clist);
         TextView btnok = (TextView) myView.findViewById(R.id.btnok);
-        pTypeAdapter = new ListViewAdapter2(AddIncomeAct.this, plist);
+        pTypeAdapter = new PopMultTypeAdapter(AddIncomeAct.this, plist);
         plv.setAdapter(pTypeAdapter);
         plv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -461,7 +257,7 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
             	ptypeId = position;
             	ptype = plist.get(position).get("name");
             	final ArrayList<Map<String, String>> clist = getChildType(ptype);
-            	cTypeAdapter = new ListViewAdapter2(AddIncomeAct.this, clist);
+            	cTypeAdapter = new PopMultTypeAdapter(AddIncomeAct.this, clist);
                 clv.setAdapter(cTypeAdapter);
                 clv.setOnItemClickListener(new OnItemClickListener() {
 
@@ -483,7 +279,6 @@ public class AddIncomeAct extends FragmentActivity implements OnClickListener{
         	plv.performItemClick( plv.getChildAt(0), 0, pTypeAdapter.getItemId(0));
 		}
         btnok.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View arg0) {
 				pw.dismiss();

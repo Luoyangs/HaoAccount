@@ -57,6 +57,7 @@
         <activity android:name="com.haoxue.haoaccount.act.AddIncomeAct" />
         <activity android:name="com.haoxue.haoaccount.act.AddOutcomeAct" />
         <activity android:name="com.haoxue.haoaccount.act.AddTransferAct" />
+        <activity android:name="com.haoxue.haoaccount.act.AddLendAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayLayerAct" />
         <activity android:name="com.haoxue.haoaccount.act.DayBalanceAct" />

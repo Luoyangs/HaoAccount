@@ -52,9 +52,9 @@ public final class Constant {
 		public static final int FRESH_ERROR = 0x05;
 	}
 	
-	/**支出账户*/
+	/**收入&支出账户*/
 	public static final String DATA_OUT_ACCOUNT[] = {"现金账户","信用卡","金融账户","虚拟账户","负债账户","债权账户","投资账户"};
-	/**支出账户子项*/
+	/**收入&支出账户子项*/
 	public static final String DATA_OUT_ACCOUNT_SUB[][] = {
 		{"现金(CNY)"},
 		{"信用卡(CNY)"},
