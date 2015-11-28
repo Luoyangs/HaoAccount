@@ -1,15 +1,15 @@
 package com.haoxue.haoaccount.view;
 
 import com.haoxue.haoaccount.R;
-import com.haoxue.haoaccount.act.AddIncomeAct;
-import com.haoxue.haoaccount.act.AddOutcomeAct;
+import com.haoxue.haoaccount.act.AddAccountAct;
 import com.haoxue.haoaccount.act.MoreTypeAct;
 import com.haoxue.haoaccount.act.PrepayAct;
-import com.haoxue.haoaccount.act.TestAct;
+import com.haoxue.haoaccount.base.Constant.ACTION;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
@@ -27,7 +27,6 @@ import android.widget.FrameLayout;
 public class RadialButtonLayout extends FrameLayout {
 
     private final static long DURATION_SHORT = 400;
-
     @ViewInject(R.id.btn_main)
     private View btnMain;
     @ViewInject(R.id.btn_orange)
@@ -110,20 +109,26 @@ public class RadialButtonLayout extends FrameLayout {
     
     @OnClick({ R.id.btn_orange, R.id.btn_yellow, R.id.btn_green, R.id.btn_blue, R.id.btn_indigo})
     public void onButtonClicked( final View btn ) {
+    	Intent intent = new Intent(getContext(),AddAccountAct.class);
         switch ( btn.getId() ) {
             case R.id.btn_orange:
-            	Intent intent = new Intent(getContext(),AddIncomeAct.class);
-            	intent.putExtra("isEdit", 0);
+            	intent.putExtra("action", ACTION.INCOMEACT);
                 context.startActivity(intent);
+                ((Activity) context).overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
                 break;
             case R.id.btn_yellow:
-            	context.startActivity(new Intent(getContext(),AddOutcomeAct.class));
+            	intent.putExtra("action", ACTION.OUTCOMEACT);
+                context.startActivity(intent);
+                ((Activity) context).overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
                 break;
             case R.id.btn_green:
             	context.startActivity(new Intent(getContext(),PrepayAct.class));
+            	((Activity) context).overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
                 break;
             case R.id.btn_blue:
-            	context.startActivity(new Intent(getContext(),TestAct.class));
+            	intent.putExtra("action", ACTION.LENDACT);
+                context.startActivity(intent);
+                ((Activity) context).overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
                 break;
             case R.id.btn_indigo:
             	context.startActivity(new Intent(getContext(),MoreTypeAct.class));

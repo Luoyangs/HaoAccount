@@ -1,10 +1,14 @@
 package com.haoxue.haoaccount.base;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.haoxue.haoaccount.R;
 import com.haoxue.haoaccount.act.EditPropertyAct;
+import com.haoxue.haoaccount.adapter.PopMultTypeAdapter;
 import com.haoxue.haoaccount.util.DateUtil;
 import com.haoxue.haoaccount.view.WheelView;
 
@@ -16,10 +20,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.TimePicker.OnTimeChangedListener;
 
@@ -31,11 +38,15 @@ import android.widget.TimePicker.OnTimeChangedListener;
 public abstract class BaseActivity extends Activity {
 	
 	protected int pyear,pmonth,pday,phour,pminute;
-	protected String dateStr;
+	protected String dateStr,ptyeStr = "",ctypeStr = "";
+	protected int userId = -1;
+	protected int ptypeId = -1;
+	protected int ctypeId = -1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		userId = ShareDataHelper.getInstance(getBaseContext()).getUserId();
 		// 获取当前的年、月、日、小时、分钟
 		Calendar c = Calendar.getInstance();
 		pyear = c.get(Calendar.YEAR);
@@ -47,8 +58,8 @@ public abstract class BaseActivity extends Activity {
 	}
 	
 	protected void finishPage(){
-		finish();
-		overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+		overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+		this.finish();
 	}
 	
 	@SuppressWarnings({ "deprecation", "rawtypes" })
@@ -65,6 +76,9 @@ public abstract class BaseActivity extends Activity {
         pw.showAtLocation(findViewById(R.id.myscroll),Gravity.BOTTOM, 0, 0);
         final WheelView main_wheel = (WheelView) myView.findViewById(R.id.main_wheel);
         final WheelView sub_wheel = (WheelView) myView.findViewById(R.id.sub_wheel);
+        if (editClass == null) {
+        	((TextView)myView.findViewById(R.id.tv_edit)).setVisibility(View.GONE);
+        }
         main_wheel.setItems(Arrays.asList(mainData));
         sub_wheel.setItems(Arrays.asList(subData));
         main_wheel.setSeletion(1);
@@ -104,12 +118,140 @@ public abstract class BaseActivity extends Activity {
 		});
 	}
 	
+	
+	@SuppressWarnings({ "deprecation", "rawtypes" })
+	protected void initMultChoice(final View view,String[] mainData,final String[][] subData,final Class editClass){
+		final ArrayList<Map<String, String>> plist = getMainData(mainData);
+		//通过布局注入器，注入布局给View对象
+        View myView = getLayoutInflater().inflate(R.layout.pop_imgtext_layout, null);
+        //通过view 和宽·高，构造PopopWindow
+        final PopupWindow pw = new PopupWindow(myView, LayoutParams.MATCH_PARENT, 700, true);
+        //设置焦点为可点击
+        pw.setFocusable(true);//可以试试设为false的结果
+        pw.setOutsideTouchable(true);  
+        pw.setBackgroundDrawable(new BitmapDrawable());
+        //将window视图显示在最下面
+        pw.showAtLocation(findViewById(R.id.myscroll),Gravity.BOTTOM, 0, 0);
+
+        final ListView plv = (ListView) myView.findViewById(R.id.plist);
+        final ListView clv = (ListView) myView.findViewById(R.id.clist);
+        final PopMultTypeAdapter pTypeAdapter = new PopMultTypeAdapter(getBaseContext(), plist);
+        plv.setAdapter(pTypeAdapter);
+        plv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int position, long id) {
+            	pTypeAdapter.setSelectIndex(position);
+            	pTypeAdapter.notifyDataSetChanged();
+            	if (!ptyeStr.equals("")) {
+            		ptyeStr = "";
+				}
+            	ptyeStr = plist.get(position).get("name");
+            	final ArrayList<Map<String, String>> clist = getSubData(subData,position);
+            	final PopMultTypeAdapter cTypeAdapter = new PopMultTypeAdapter(getBaseContext(), clist);
+                clv.setAdapter(cTypeAdapter);
+                clv.setOnItemClickListener(new OnItemClickListener(){
+                	@Override
+            		public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+            			cTypeAdapter.setSelectIndex(position);
+            			cTypeAdapter.notifyDataSetChanged();
+            			if (!ctypeStr.contains("")) {
+            				ctypeStr = "";
+            			}
+            			ctypeStr = clist.get(position).get("name");
+						((TextView) view).setText(ptyeStr + "  ->  " + ctypeStr);
+            		}
+                });
+            }
+        });
+        if (plv != null) {
+        	plv.performItemClick( plv.getChildAt(0), 0, pTypeAdapter.getItemId(0));
+		}
+        ((TextView) myView.findViewById(R.id.btnok)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				setText(((TextView)view),ptyeStr + "  ->  " + ctypeStr);
+				pw.dismiss();
+			}
+		});
+        ((TextView) myView.findViewById(R.id.tv_ok)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				setText(((TextView)view),ptyeStr + "  ->  " + ctypeStr);
+				pw.dismiss();
+			}
+		});
+	}
+
+	@SuppressWarnings({ "deprecation", "rawtypes" })
+	protected void initMultChoice(final View view,final ArrayList<Map<String, String>> mainData,final Class editClass){
+		//通过布局注入器，注入布局给View对象
+        View myView = getLayoutInflater().inflate(R.layout.pop_imgtext_layout, null);
+        //通过view 和宽·高，构造PopopWindow
+        final PopupWindow pw = new PopupWindow(myView, LayoutParams.MATCH_PARENT, 700, true);
+        //设置焦点为可点击
+        pw.setFocusable(true);//可以试试设为false的结果
+        pw.setOutsideTouchable(true);  
+        pw.setBackgroundDrawable(new BitmapDrawable());
+        //将window视图显示在最下面
+        pw.showAtLocation(findViewById(R.id.myscroll),Gravity.BOTTOM, 0, 0);
+
+        final ListView plv = (ListView) myView.findViewById(R.id.plist);
+        final ListView clv = (ListView) myView.findViewById(R.id.clist);
+        final PopMultTypeAdapter pTypeAdapter = new PopMultTypeAdapter(getBaseContext(), mainData);
+        plv.setAdapter(pTypeAdapter);
+        plv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View arg1, int position, long id) {
+            	pTypeAdapter.setSelectIndex(position);
+            	pTypeAdapter.notifyDataSetChanged();
+            	if (!ptyeStr.equals("")) {
+            		ptyeStr = "";
+				}
+            	ptypeId = position;
+            	ptyeStr = mainData.get(position).get("name");
+            	final ArrayList<Map<String, String>> clist = getChildType(ptyeStr);
+            	final PopMultTypeAdapter cTypeAdapter = new PopMultTypeAdapter(getBaseContext(), clist);
+                clv.setAdapter(cTypeAdapter);
+                clv.setOnItemClickListener(new OnItemClickListener(){
+                	@Override
+            		public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+            			cTypeAdapter.setSelectIndex(position);
+            			cTypeAdapter.notifyDataSetChanged();
+            			if (!ctypeStr.contains("")) {
+            				ctypeStr = "";
+            			}
+            			ctypeId = position;
+            			ctypeStr = clist.get(position).get("name");
+						((TextView) view).setText(ptyeStr + "  ->  " + ctypeStr);
+            		}
+                });
+            }
+        });
+        if (plv != null) {
+        	plv.performItemClick( plv.getChildAt(0), 0, pTypeAdapter.getItemId(0));
+		}
+        ((TextView) myView.findViewById(R.id.btnok)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				setText(((TextView)view),ptyeStr + "  ->  " + ctypeStr);
+				pw.dismiss();
+			}
+		});
+        ((TextView) myView.findViewById(R.id.tv_ok)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				setText(((TextView)view),ptyeStr + "  ->  " + ctypeStr);
+				pw.dismiss();
+			}
+		});
+	}
+	
 	@SuppressWarnings({ "deprecation", "rawtypes" })
 	protected void initSingleChoice(final View view,String[] mainData,final Class editClass){
 		//通过布局注入器，注入布局给View对象
         View myView = getLayoutInflater().inflate(R.layout.pop_onewheel_layout, null);
         //通过view 和宽·高，构造PopopWindow
-        final PopupWindow pw = new PopupWindow(myView, LayoutParams.MATCH_PARENT, 694, true);
+        final PopupWindow pw = new PopupWindow(myView, LayoutParams.MATCH_PARENT, 700, true);
         //设置焦点为可点击
         pw.setFocusable(true);//可以试试设为false的结果
         pw.setOutsideTouchable(true);  
@@ -117,6 +259,9 @@ public abstract class BaseActivity extends Activity {
         //将window视图显示在最下面
         pw.showAtLocation(findViewById(R.id.myscroll),Gravity.BOTTOM, 0, 0);
         final WheelView main_wheel = (WheelView) myView.findViewById(R.id.main_wheel);
+        if (editClass == null) {
+        	((TextView)myView.findViewById(R.id.tv_edit)).setVisibility(View.GONE);
+        }
         main_wheel.setItems(Arrays.asList(mainData));
         main_wheel.setSeletion(1);
         main_wheel.setOnWheelViewListener(new WheelView.OnWheelViewListener() {
@@ -198,6 +343,31 @@ public abstract class BaseActivity extends Activity {
 			}
 		});
 	}
+	
+	private ArrayList<Map<String, String>> getMainData(String[] mainData) {
+		ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        for (int i = 0; i < mainData.length; i++) {
+        	Map<String, String> map = new HashMap<String, String>();
+        	map.put("img", "");
+        	map.put("name", mainData[i]);
+        	list.add(map);
+		}
+        return list;
+    }
+	
+	private ArrayList<Map<String, String>> getSubData(String[][] subData,int mainId) {
+		ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        for (int i = 0; i < subData[mainId].length; i++) {
+        	Map<String, String> map = new HashMap<String, String>();
+        	map.put("img", "");
+        	map.put("name", subData[mainId][i]);
+        	list.add(map);
+		}
+        return list;
+    }
+	
+	/**依据父类别获取子类别*/
+	protected abstract ArrayList<Map<String, String>> getChildType(String ptype);
 	
 	private void setText(TextView view,String text){
 		if (view.getText() == null || view.getText().equals("")) {

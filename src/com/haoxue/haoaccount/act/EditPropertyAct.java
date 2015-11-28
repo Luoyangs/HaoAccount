@@ -12,7 +12,7 @@ import android.os.Bundle;
  * 作者：Luoyangs
  * 时间：2015-11-27
  */
-@ContentView(R.layout.act_addincom_layout)
+@ContentView(R.layout.act_addaccount_layout)
 public class EditPropertyAct extends Activity {
 
 	@Override

@@ -61,7 +61,12 @@ public class PopMultTypeAdapter extends BaseAdapter{
         Map<String, String> map = list.get(position);
         ImageView img = (ImageView)convertView.findViewById(R.id.img);
         TextView tv = (TextView)convertView.findViewById(R.id.text);
-        img.setImageDrawable(FileUtil.getDrawableByName(context,map.get("img")));
+        String imgName = map.get("img");
+        if (imgName.equals("")) {
+        	img.setVisibility(View.INVISIBLE);
+		}else{
+			img.setImageDrawable(FileUtil.getDrawableByName(context,imgName));
+		}
         tv.setText(map.get("name"));
         if (position == selectIndex) {
         	tv.setTextColor(Color.parseColor("#E07E05"));

@@ -54,15 +54,13 @@
         <activity
             android:name="com.haoxue.haoaccount.act.PasswordSetAct"
             android:configChanges="keyboardHidden" />
-        <activity android:name="com.haoxue.haoaccount.act.AddIncomeAct" />
-        <activity android:name="com.haoxue.haoaccount.act.AddOutcomeAct" />
-        <activity android:name="com.haoxue.haoaccount.act.AddTransferAct" />
-        <activity android:name="com.haoxue.haoaccount.act.AddLendAct" />
+        <activity android:name="com.haoxue.haoaccount.act.AddAccountAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayAct" />
         <activity android:name="com.haoxue.haoaccount.act.PrepayLayerAct" />
         <activity android:name="com.haoxue.haoaccount.act.DayBalanceAct" />
         <activity android:name="com.haoxue.haoaccount.act.EditPropertyAct" />
-        <activity android:name="com.haoxue.haoaccount.act.MoreTypeAct" />
+        <activity android:name="com.haoxue.haoaccount.act.MoreTypeAct"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name="com.haoxue.haoaccount.act.SetAct"/>
         <activity android:name="com.haoxue.haoaccount.act.SignAct"/>
         <activity android:name="com.haoxue.haoaccount.act.NoteListAct"/>

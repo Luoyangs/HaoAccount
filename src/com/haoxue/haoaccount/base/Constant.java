@@ -52,6 +52,29 @@ public final class Constant {
 		public static final int FRESH_ERROR = 0x05;
 	}
 	
+	public final class ACTION{
+		/**收入*/
+		public static final int INCOMEACT = 0x01;
+		/**支出*/
+		public static final int OUTCOMEACT = 0x02;
+		/**转账*/
+		public static final int TRANSFERACT = 0x03;
+		/**借贷*/
+		public static final int LENDACT = 0x04;
+		/**报销*/
+		public static final int EXPENCEACT = 0x05;
+		/**班费*/
+		public static final int CLASSACT = 0x06;
+		/**代付*/
+		public static final int CHARGEACT = 0x07;
+		/**退款*/
+		public static final int PAYBACKACT = 0x08;
+		/**进货*/
+		public static final int BUYINACT = 0x09;
+		/**销售*/
+		public static final int CUSTOMEACT = 0x010;
+	}
+	
 	/**收入&支出账户*/
 	public static final String DATA_OUT_ACCOUNT[] = {"现金账户","信用卡","金融账户","虚拟账户","负债账户","债权账户","投资账户"};
 	/**收入&支出账户子项*/
@@ -72,6 +95,8 @@ public final class Constant {
 	public static final String DATA_ZA_PRO[] = {"无项目","促销活动","优惠"};
 	/**转账成员*/
 	public static final String DATA_ZA_CMP[] = {"无成员","本人","家人","员工","BOSS"};
+	/**借贷账户*/
+	public static final String DATA_LD_ACCOUNT[] = {"应付款项(CNY)","生意借款(CNY)","其他款项(CNY)"};
 	
 	public final class PSV{
 		/**相机图片*/
@@ -88,11 +113,9 @@ public final class Constant {
 		
 		/**用户表名*/
 		public static final String USER_TABLE_NAME = "USER_TABLE";
-		/**收入表名*/
-		public static final String INCOME_TABLE_NAME = "INCOME_TABLE";
-		/**支出表名*/
-		public static final String OUTCOME_TABLE_NAME = "OUTCOME_TABLE";
-		/**预算表名*/
+		/**账本表名*/
+		public static final String ACCOUNT_TABLE_NAME = "ACCOUNT_TABLE";
+		/**预算&支出表名*/
 		public static final String PREPAY_TABLE_NAME = "PREPAY_TABLE";
 		/**总类别表名*/
 		public static final String TYPE_TABLE_NAME = "TYPE_TABLE";
@@ -119,7 +142,6 @@ public final class Constant {
 		public static final String GET_PTYPE_BY_TYPE ="select name,img from PTYPE_TABLE where type=?";
 		/**依据父类别获取子类别*/
 		public static final String GET_CTYPE_BY_PTYPE = "select c.name,c.img from CTYPE_TABLE c,PTYPE_TABLE p where c.type=? and p.id = c.ptype and p.name = ?";
-		
 		/**添加预算*/
 		public static final String INSERT_PREPAY = "insert into PREPAY_TABLE(UserId,num,pay,type,ptype,ctype,froms,use,info,year,month) values(?,?,?,?,?,?,?,?,?,?,?)";
 		/**判断二级预算是否存在*/
@@ -188,11 +210,9 @@ CREATE TABLE TYPE_TABLE(id integer primary key autoincrement,name varchar(60),ow
 create table PTYPE_TABLE(id integer primary key autoincrement,name varchar(60),img varchar(60),type int,state int);
 
 create table CTYPE_TABLE(id integer primary key autoincrement, name varchar(60),img varchar(60),type int,ptype int,state int);
-
-CREATE TABLE INCOME_TABLE(id integer primary key autoincrement, userId int,num float default 0,pay float default 0,type int, ptype int,ctype int,froms varchar(200),save varchar(200), info text,date DATETIME DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime')));
-
-CREATE TABLE OUTCOME_TABLE(id integer primary key autoincrement, userId int,num float default 0,type int, ptype int,ctype int,froms varchar(200),use varchar(200), info text,date DATETIME DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime')));
-
+//收入和其他类账本
+CREATE TABLE ACCOUNT_TABLE(id integer primary key autoincrement, userId int,num float default 0,pay float default 0,item1 varchar(200),item2 varchar(200),item3 varchar(200),item4 varchar(200), info text,date DATETIME DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime')));
+//预算&支出
 CREATE TABLE PREPAY_TABLE(id integer primary key autoincrement, userId int,num float default 0,pay float default 0,type int, ptype int,ctype int,froms varchar(200),use varchar(200), info text,year int,month int,date DATETIME DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime')));
 
 CREATE TABLE MSG_TABLE(id integer primary key autoincrement, title nvarchar(500),content text,type int,state int default 0,createTime DATETIME DEFAULT (datetime(CURRENT_TIMESTAMP,'localtime')));
@@ -357,12 +377,6 @@ insert into CTYPE_TABLE(name,img,type,ptype,state) values('赔偿罚款','j6',3,
 insert into CTYPE_TABLE(name,img,type,ptype,state) values('其他支出','o1',3,24,0);
 insert into CTYPE_TABLE(name,img,type,ptype,state) values('意外丢失','o2',3,24,0);
 insert into CTYPE_TABLE(name,img,type,ptype,state) values('烂账损失','o3',3,24,0);
-
-insert into INCOME_TABLE(UserId,num,pay,type,ptype,ctype,froms,save,info)
-values(0,200,20,1,1,4,'xdkfj','hhhh','kdhfkjfxldfixdjfixdfkd');
-
-insert into OUTCOME_TABLE(UserId,num,type,ptype,ctype,froms,use,info)
-values(0,200,2,5,27,'xdkfj','hhhh','kdhfkjfxldfixdjfixdfkd');
 
 insert into PREPAY_TABLE(UserId,num,pay,type,ptype,ctype,froms,use,info,year,month)
 values(0,1200,230,3,19,74,'xdkfj','几款是恐惧的女生','s收到了开发商',2015,10);
